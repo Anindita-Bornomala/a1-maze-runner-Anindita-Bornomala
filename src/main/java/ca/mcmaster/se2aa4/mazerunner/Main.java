@@ -16,7 +16,7 @@ public class Main {
 
         // Edit 2
         Options options = new Options();
-        options.addOption("i", "input", true, "Input file path");
+        options.addOption("-i", "--input", true, "Input file path");
         
         CommandLineParser parser = new DefaultParser();
         // end of edit 2
@@ -27,8 +27,8 @@ public class Main {
             CommandLine cmd = parser.parse(options, args);
 
             String inputFilePath;
-            if (cmd.hasOption("i")) {
-                inputFilePath = cmd.getOptionValue("i");
+            if (cmd.hasOption("-i")) {
+                inputFilePath = cmd.getOptionValue("-i");
             } else {
                 logger.error("Input file path is required");
                 return;
