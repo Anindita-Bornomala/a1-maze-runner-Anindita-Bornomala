@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.commons.cli.*;
 
 public class Main {
 
@@ -12,19 +13,28 @@ public class Main {
 
     public static void main(String[] args) {
         logger.info("** Starting Maze Runner");
+
+        Options options = new Options();
+        options.addOption("i", "input", true, "Input filepath");
+        CommandLineParser parser = new DefaultParser();
+
         try {
-            logger.info("**** Reading the maze from file " + "-i");
-            BufferedReader reader = new BufferedReader(new FileReader("-i"));
+            CommandLine cmd = parser.parse(options, args);
+            String inputFilePath = cmd.getOptionValue("i");
+           
+            logger.info("**** Reading the maze from file " + inputFilePath);
+            BufferedReader reader = new BufferedReader(new FileReader(inputFilePath));
+            
             String line;
             while ((line = reader.readLine()) != null) {
                 for (int idx = 0; idx < line.length(); idx++) {
                     if (line.charAt(idx) == '#') {
-                        logger.trace("WALL ");
+                        System.out.print("WALL ");
                     } else if (line.charAt(idx) == ' ') {
-                        logger.trace("PASS ");
+                        System.out.print("PASS ");
                     }
                 }
-                logger.trace(System.lineSeparator());
+                System.out.print(System.lineSeparator());
             }
         } catch(Exception e) {
             logger.error("/!\\ An error has occured /!\\");
