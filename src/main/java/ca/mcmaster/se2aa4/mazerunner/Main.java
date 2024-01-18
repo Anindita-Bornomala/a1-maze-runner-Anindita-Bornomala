@@ -37,7 +37,7 @@ public class Main {
                         logger.info("PASS ");
                     }
                 }
-                logger.trace(System.lineSeparator());
+                logger.info(System.lineSeparator());
             }
         } catch(Exception e) {
             logger.error("/!\\ An error has occured /!\\");
