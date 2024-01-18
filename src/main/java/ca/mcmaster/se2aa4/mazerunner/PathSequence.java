@@ -2,13 +2,19 @@ package ca.mcmaster.se2aa4.mazerunner;
 
 public class PathSequence {
 
-    public static String P1_NAME = "p1";
-    public static String P2_NAME = "p2";
+    public static String FILEPATH = "i";
+    public static String PATHCHECK = "p";
 
-    public Match(Integer integer, Integer integer1) { }
+    public void pathStart(String[] mazeStrings) { } // method to find maze start
+    
+    //pathfinding algorithm
+    public String rightHandRule() { 
+        return "No path found!";
+    }
 
-    public String play() {
-        return "No winner yet!";
+    // Path guess checker
+    public String pathCheck() {
+        return "Incorrect path!";
     }
 
 }
