@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.commons.cli.*; // EDIT 1
+import org.apache.commons.cli.*;
 
 public class Main {
 
@@ -14,20 +14,17 @@ public class Main {
     public static void main(String[] args) {
         logger.info("** Starting Maze Runner");
 
-        // Edit 2
         Options options = new Options();
         options.addOption("i", "input", true, "Input filepath");
         CommandLineParser parser = new DefaultParser();
-        // end of edit 2
 
         try {
-            // edit 3
             CommandLine cmd = parser.parse(options, args);
             String inputFilePath = cmd.getOptionValue("i");
-            // end of edit 3
+           
+            logger.info("**** Reading the maze from file " + inputFilePath);
+            BufferedReader reader = new BufferedReader(new FileReader(inputFilePath));
             
-            logger.info("**** Reading the maze from file " + inputFilePath); // edit 4, from "-i" to inputFilePath
-            BufferedReader reader = new BufferedReader(new FileReader(inputFilePath)); // edit 5
             String line;
             while ((line = reader.readLine()) != null) {
                 for (int idx = 0; idx < line.length(); idx++) {
