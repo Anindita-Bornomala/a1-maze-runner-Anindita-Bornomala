@@ -32,12 +32,12 @@ public class Main {
             while ((line = reader.readLine()) != null) {
                 for (int idx = 0; idx < line.length(); idx++) {
                     if (line.charAt(idx) == '#') {
-                        logger.info("WALL ");
+                        System.out.print("WALL ");
                     } else if (line.charAt(idx) == ' ') {
-                        logger.info("PASS ");
+                        System.out.print("PASS ");
                     }
                 }
-                logger.info(System.lineSeparator());
+                System.out.print(System.lineSeparator());
             }
         } catch(Exception e) {
             logger.error("/!\\ An error has occured /!\\");
