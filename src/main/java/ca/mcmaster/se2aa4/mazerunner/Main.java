@@ -23,6 +23,18 @@ public class Main {
         logger.info("**** Computing path");
         logger.debug("PATH NOT COMPUTED"); // might not need?
         logger.info("** End of MazeRunner");
+
+
+        // testing pathfinding methods
+        PathFinder path = new PathFinder();
+        Integer[] startCond = path.pathStart(maze1);
+        Integer[] endCond = path.pathEnd(maze1);
+        Integer[] move = startCond;
+        while (move != endCond) {
+            move = path.moveForward(startCond, path.nextStep(startCond, 'E'));
+        }
+        // testing end
+
     }
 
     private static Configuration configure(String[] cmdArgs) throws Exception, FileNotFoundException {

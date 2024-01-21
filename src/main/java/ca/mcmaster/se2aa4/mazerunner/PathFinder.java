@@ -2,6 +2,7 @@ package ca.mcmaster.se2aa4.mazerunner;
 
 public class PathFinder {
 
+    // given maze data, return start condition
     public Integer[] pathStart(char[][] mazeData) {
         Integer[] startCoord = {0, 0};
         for (int row = 0; row < mazeData.length; row++) {
@@ -10,10 +11,12 @@ public class PathFinder {
                 break;
             }
         }
-        // given maze data, return start condition
+        System.out.print("Start condition:");
+        System.out.println(startCoord);
         return startCoord;
     }
 
+    // given maze data, return end condition
     public Integer[] pathEnd(char[][] mazeData) {
         Integer[] endCoord = {0, mazeData.length};
         for (int row = 0; row < mazeData.length; row++) {
@@ -22,13 +25,15 @@ public class PathFinder {
                 break;
             }
         }
-        // given maze data, return end condition
+        System.out.print("End condition:");
+        System.out.println(endCoord);
         return endCoord;
     }
 
     public Integer[] moveForward(Integer[] currentStep, Integer[] nextStep) {
         currentStep = nextStep;
-        System.out.println("Current position:", currentStep);
+        System.out.print("Current position:");
+        System.out.println(currentStep);
         return currentStep;
     }
 
@@ -43,6 +48,10 @@ public class PathFinder {
         } else {
             nextPosition[0]--;
         }
+        System.out.print("Direction:");
+        System.out.println(direction);
+        System.out.print("Next step:");
+        System.out.println(nextPosition);
         return nextPosition;
     }
 
