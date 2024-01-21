@@ -20,27 +20,14 @@ public class Main {
 
         logger.info("**** Reading the maze from file " + config.inputFile);
         BufferedReader reader = new BufferedReader(new FileReader(config.inputFile));
-
-        // change "i" back to "idx" eventually
-        String line;
-        while ((line = reader.readLine()) != null) { // while the String line is not empty,
-            for (int i = 0; i < line.length(); i++) { // for each element in a line
-                if (line.charAt(i) == '#') {
-                    System.out.print("WALL ");
-                } else if (line.charAt(i) == ' ') {
-                    System.out.print("PASS ");
-                }
-            }
-            System.out.print(System.lineSeparator());
-        }
+        
+        MazeData maze = new MazeData();
+        char[][] maze1 = maze.storeMazeData(config.inputFile);
+        maze.printMazeData(maze1);
 
         logger.info("**** Computing path");
         logger.debug("PATH NOT COMPUTED");
         logger.info("** End of MazeRunner");
-
-        MazeData maze = new MazeData();
-        char[][] maze1 = maze.storeMazeData(config.inputFile);
-        maze.printMazeData(maze1);
     }
 
     private static Configuration configure(String[] cmdArgs) throws Exception, FileNotFoundException {
