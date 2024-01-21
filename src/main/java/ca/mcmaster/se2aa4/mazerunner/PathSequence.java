@@ -12,7 +12,9 @@ public class PathSequence {
         return "Empty maze!";
     }
 
-    public String traverseMaze() { return "False"; }
+    public String findPath() { return "False"; }
+
+    public String factorize(String canonical) { return "False"; }
 
     // Path guess checker
     public String pathCheck() {
