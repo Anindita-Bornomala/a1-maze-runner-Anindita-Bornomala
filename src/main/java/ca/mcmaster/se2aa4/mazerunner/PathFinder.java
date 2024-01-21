@@ -26,7 +26,12 @@ public class PathFinder {
         return rowNum;
     }
 
-    public String currentStep() { return "False"; }
+    public String moveForward(Integer[] nextStep) {
+        Integer[] current = [5, 0]
+
+
+        return "False";
+    }
 
     public String nextStep() { return "False"; }
 
