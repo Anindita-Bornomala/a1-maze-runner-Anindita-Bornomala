@@ -2,12 +2,19 @@ package ca.mcmaster.se2aa4.mazerunner;
 
 public class PathFinder {
 
-    public String pathStart(String[][] mazeData) {
+    public Integer pathStart(char[][] mazeData) {
+        Integer rowNum = 0;
+        for (int row = 0; row < mazeData.length; row++) {
+            if (mazeData[row].length > 0 && mazeData[row][0] == ' ') {
+                rowNum = row;
+                break;
+            }
+        }
         // given maze data, return start condition
-        return "False";
+        return rowNum;
     }
 
-    public String pathEnd(String[][] mazeData) {
+    public String pathEnd(char[][] mazeData) {
         // given maze data, return end condition
         return "False";
     }
