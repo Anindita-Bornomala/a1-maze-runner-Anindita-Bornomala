@@ -16,12 +16,7 @@ public class Main {
         logger.info("** Starting Maze Runner");
 
         Configuration config = configure(args);
-        System.out.println(config);
-        
-        /* MazeData maze = new MazeData();
-        char[][] maze1 = maze.storeMazeData(config.inputFile);
-        maze.printMazeData(maze1);
-        */
+        // System.out.println(config);
 
         logger.info("**** Reading the maze from file " + config.inputFile);
         BufferedReader reader = new BufferedReader(new FileReader(config.inputFile));
@@ -39,10 +34,13 @@ public class Main {
             System.out.print(System.lineSeparator());
         }
 
-
         logger.info("**** Computing path");
         logger.debug("PATH NOT COMPUTED");
         logger.info("** End of MazeRunner");
+
+        MazeData maze = new MazeData();
+        char[][] maze1 = maze.storeMazeData(config.inputFile);
+        maze.printMazeData(maze1);
     }
 
     private static Configuration configure(String[] cmdArgs) throws Exception, FileNotFoundException {
@@ -56,7 +54,6 @@ public class Main {
 
         return new Configuration(inputFilePath);
     }
-
 
     private record Configuration(String inputFile) {
         Configuration {

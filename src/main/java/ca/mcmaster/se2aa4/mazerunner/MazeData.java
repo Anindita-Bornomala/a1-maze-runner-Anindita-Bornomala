@@ -39,9 +39,9 @@ public class MazeData {
         while ((line3 = reader2.readLine()) != null) {
             for (int i = 0; i < line3.length(); i++) {
                 if (line3.charAt(i) == '#') {
-                    mazeData[row][i] = 'W';
+                    mazeData[row][i] = '#';
                 } else if (line3.charAt(i) == ' ') {
-                    mazeData[row][i] = 'P';
+                    mazeData[row][i] = ' ';
                 }
             }
             row++;
@@ -52,7 +52,11 @@ public class MazeData {
     public void printMazeData(char[][] mazeData) {
         for (char[] mazeRow : mazeData) {
             for (char element : mazeRow) {
-                System.out.print(element);
+                if (element == '#') {
+                    System.out.print("WALL ");
+                } else if (element == ' ') {
+                    System.out.print("PASS ");
+                }
             }
             System.out.println();
         }
