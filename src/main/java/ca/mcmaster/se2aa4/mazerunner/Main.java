@@ -24,6 +24,7 @@ public class Main {
             CommandLine cmd = parser.parse(options, args);
             String inputFilePath = cmd.getOptionValue("i");
             // String inputPathGuess = cmd.getOptionValue("p");
+            // System.out.println(inputFilePath) just equals the name of the .txt, example: "./examples/straight.maz.txt"
            
             logger.info("**** Reading the maze from file " + inputFilePath);
             BufferedReader reader = new BufferedReader(new FileReader(inputFilePath));
