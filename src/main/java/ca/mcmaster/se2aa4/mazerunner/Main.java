@@ -23,7 +23,7 @@ public class Main {
         try {
             CommandLine cmd = parser.parse(options, args);
             String inputFilePath = cmd.getOptionValue("i");
-            String inputPathGuess = cmd.getOptionValue("p");
+            // String inputPathGuess = cmd.getOptionValue("p");
            
             logger.info("**** Reading the maze from file " + inputFilePath);
             BufferedReader reader = new BufferedReader(new FileReader(inputFilePath));
