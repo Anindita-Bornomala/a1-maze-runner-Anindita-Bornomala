@@ -16,11 +16,14 @@ public class Main {
 
         Options options = new Options();
         options.addOption("i", "input", true, "Input filepath");
+        options.addOption("p", "pathGuess", true, "Input path guess");
+        
         CommandLineParser parser = new DefaultParser();
 
         try {
             CommandLine cmd = parser.parse(options, args);
             String inputFilePath = cmd.getOptionValue("i");
+            String inputPathGuess = cmd.getOptionValue("p");
            
             logger.info("**** Reading the maze from file " + inputFilePath);
             BufferedReader reader = new BufferedReader(new FileReader(inputFilePath));
