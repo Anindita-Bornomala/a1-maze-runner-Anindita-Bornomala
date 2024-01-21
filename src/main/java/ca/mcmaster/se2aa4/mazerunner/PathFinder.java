@@ -26,14 +26,15 @@ public class PathFinder {
         return rowNum;
     }
 
-    public String moveForward(Integer[] nextStep) {
-        Integer[] current = [5, 0]
-
-
-        return "False";
+    public Integer[] moveForward(Integer[] currentStep, Integer[] nextStep) {
+        currentStep = nextStep;
+        System.out.println("Current position:", currentStep);
+        return currentStep;
     }
 
-    public String nextStep() { return "False"; }
+    public String nextStep(Integer[] currentStep) {
+        return "False";
+    }
 
     //pathfinding algorithm
     public String rightHandRule() {
