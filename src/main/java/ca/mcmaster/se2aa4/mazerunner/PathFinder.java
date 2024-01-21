@@ -43,6 +43,34 @@ public class PathFinder {
         return currentStep;
     }
 
+    public char turnRight(char oldDirection) {
+        char newDirection = 'E';
+        if (oldDirection == 'E') {
+            newDirection = 'S';
+        } else if (oldDirection == 'S') {
+            newDirection = 'W';
+        } else if (oldDirection == 'W') {
+            newDirection = 'N';
+        } else if (oldDirection == 'N') {
+            newDirection = 'E';
+        }
+        return newDirection;
+    }
+
+    public char turnLeft(char oldDirection) {
+        char newDirection = 'E';
+        if (oldDirection == 'E') {
+            newDirection = 'N';
+        } else if (oldDirection == 'S') {
+            newDirection = 'E';
+        } else if (oldDirection == 'W') {
+            newDirection = 'S';
+        } else if (oldDirection == 'N') {
+            newDirection = 'W';
+        }
+        return newDirection;
+    }
+
     public Integer[] nextStep(Integer[] currentStep, char direction) {
         Integer[] nextPosition = currentStep;
         if (direction == 'E') {
