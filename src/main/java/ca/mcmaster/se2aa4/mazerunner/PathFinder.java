@@ -32,8 +32,24 @@ public class PathFinder {
         return currentStep;
     }
 
-    public String nextStep(Integer[] currentStep) {
-        return "False";
+    public Integer[] nextStep(Integer[] currentStep) {
+        char direction = 'E';
+        Integer[] nextPosition = currentStep;
+        if (direction == 'E') {
+            nextPosition[1]++;  
+        } else if (direction == 'S') {
+            nextPosition[0]++;
+        } else if (direction == 'W') {
+            nextPosition[1]--;
+        } else {
+            nextPosition[0]--;
+        }
+        return nextPosition;
+    }
+
+    public char direction() {
+        if 
+        return ' ';
     }
 
     //pathfinding algorithm
