@@ -7,13 +7,6 @@ import java.io.IOException;
 
 public class MazeData {
 
-    /*
-    Include this in Main.java to access:
-    MazeData maze = new MazeData();
-    char[][] maze1 = maze.storeMazeData(config.inputFile);
-    maze.printMazeData(maze1);
-    */
-
     public char[][] storeMazeData(String filePath) throws IOException, FileNotFoundException{
         
         // initialize an empty matrix with correct rows and columns
