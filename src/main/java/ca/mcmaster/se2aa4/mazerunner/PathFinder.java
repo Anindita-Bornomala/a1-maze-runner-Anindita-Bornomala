@@ -2,28 +2,28 @@ package ca.mcmaster.se2aa4.mazerunner;
 
 public class PathFinder {
 
-    public Integer pathStart(char[][] mazeData) {
-        Integer rowNum = 0;
+    public Integer[] pathStart(char[][] mazeData) {
+        Integer[] startCoord = {0, 0};
         for (int row = 0; row < mazeData.length; row++) {
             if (mazeData[row].length > 0 && mazeData[row][0] == ' ') {
-                rowNum = row;
+                startCoord[0] = row;
                 break;
             }
         }
         // given maze data, return start condition
-        return rowNum;
+        return startCoord;
     }
 
-    public Integer pathEnd(char[][] mazeData) {
-        Integer rowNum = 0;
+    public Integer[] pathEnd(char[][] mazeData) {
+        Integer[] endCoord = {0, mazeData.length};
         for (int row = 0; row < mazeData.length; row++) {
             if (mazeData[row].length > 0 && mazeData[row][-1] == ' ') {
-                rowNum = row;
+                endCoord[0] = row;
                 break;
             }
         }
         // given maze data, return end condition
-        return rowNum;
+        return endCoord;
     }
 
     public Integer[] moveForward(Integer[] currentStep, Integer[] nextStep) {
@@ -32,8 +32,7 @@ public class PathFinder {
         return currentStep;
     }
 
-    public Integer[] nextStep(Integer[] currentStep) {
-        char direction = 'E';
+    public Integer[] nextStep(Integer[] currentStep, char direction) {
         Integer[] nextPosition = currentStep;
         if (direction == 'E') {
             nextPosition[1]++;  
@@ -45,11 +44,6 @@ public class PathFinder {
             nextPosition[0]--;
         }
         return nextPosition;
-    }
-
-    public char direction() {
-        if 
-        return ' ';
     }
 
     //pathfinding algorithm
