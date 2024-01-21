@@ -24,7 +24,6 @@ public class MazeData {
 
         char[][] mazeData = new char[sumRows][sumCols];
 
-
         // Fill mazeData with proper data
         BufferedReader reader2 = new BufferedReader(new FileReader(filePath));
         String line3;

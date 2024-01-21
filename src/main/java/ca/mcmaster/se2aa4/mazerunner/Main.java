@@ -1,6 +1,5 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import org.apache.logging.log4j.LogManager;
@@ -42,5 +41,4 @@ public class Main {
             if (inputFile == null) {throw new IllegalArgumentException("Maze text file is empty!");} 
         }
     }
-
 }
