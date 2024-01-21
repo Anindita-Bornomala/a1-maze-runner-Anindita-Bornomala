@@ -66,7 +66,7 @@ public class PathFinder {
     //pathfinding algorithm
     public String rightHandRule() {
         // get the maze as a matrix
-        // start at the "PASS" on column 1 (ex. r3, c1)
+        // Start at starting position
         // Search left: one row up, same column
         // Search right: one row down, same column
         // Go forward: same row, one column forward 
