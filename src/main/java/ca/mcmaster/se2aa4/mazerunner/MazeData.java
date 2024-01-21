@@ -37,12 +37,8 @@ public class MazeData {
         String line3;
         int row = 0;
         while ((line3 = reader2.readLine()) != null) {
-            for (int i = 0; i < line3.length(); i++) {
-                if (line3.charAt(i) == '#') {
-                    mazeData[row][i] = '#';
-                } else if (line3.charAt(i) == ' ') {
-                    mazeData[row][i] = ' ';
-                }
+            for (int column = 0; column < line3.length(); column++) {
+                mazeData[row][column] = line3.charAt(column);
             }
             row++;
         }
@@ -58,7 +54,7 @@ public class MazeData {
                     System.out.print("PASS ");
                 }
             }
-            System.out.println();
+            System.out.print(System.lineSeparator());
         }
     }
     
