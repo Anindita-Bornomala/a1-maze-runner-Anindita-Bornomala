@@ -5,35 +5,41 @@ public class PathFinder {
     // given maze data, return start condition
     public Integer[] pathStart(char[][] mazeData) {
         Integer[] startCoord = {0, 0};
-        for (int row = 0; row < mazeData.length; row++) {
+        for (int row = 0; row < mazeData.length-1; row++) {
             if (mazeData[row].length > 0 && mazeData[row][0] == ' ') {
                 startCoord[0] = row;
                 break;
             }
         }
         System.out.print("Start condition:");
-        System.out.println(startCoord);
+        for (Integer num : startCoord) {
+            System.out.print(num + " ");
+        }
         return startCoord;
     }
 
     // given maze data, return end condition
     public Integer[] pathEnd(char[][] mazeData) {
         Integer[] endCoord = {0, mazeData.length};
-        for (int row = 0; row < mazeData.length; row++) {
-            if (mazeData[row].length > 0 && mazeData[row][-1] == ' ') {
+        for (int row = 0; row < mazeData.length-1; row++) {
+            if (mazeData[row].length > 0 && mazeData[row][mazeData.length-1] == ' ') {
                 endCoord[0] = row;
                 break;
             }
         }
         System.out.print("End condition:");
-        System.out.println(endCoord);
+        for (Integer num : endCoord) {
+            System.out.print(num + " ");
+        }
         return endCoord;
     }
 
     public Integer[] moveForward(Integer[] currentStep, Integer[] nextStep) {
         currentStep = nextStep;
         System.out.print("Current position:");
-        System.out.println(currentStep);
+        for (Integer num : currentStep) {
+            System.out.print(num + " ");
+        }
         return currentStep;
     }
 
@@ -51,7 +57,9 @@ public class PathFinder {
         System.out.print("Direction:");
         System.out.println(direction);
         System.out.print("Next step:");
-        System.out.println(nextPosition);
+        for (Integer num : nextPosition) {
+            System.out.print(num + " ");
+        }
         return nextPosition;
     }
 

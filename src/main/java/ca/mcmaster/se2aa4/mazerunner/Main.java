@@ -24,16 +24,24 @@ public class Main {
         logger.debug("PATH NOT COMPUTED"); // might not need?
         logger.info("** End of MazeRunner");
 
-
-        // testing pathfinding methods
+        
+        // Testing pathfinding methods
         PathFinder path = new PathFinder();
         Integer[] startCond = path.pathStart(maze1);
+        System.out.println();
         Integer[] endCond = path.pathEnd(maze1);
+        System.out.println();
         Integer[] move = startCond;
-        while (move != endCond) {
+
+        while (move[1] < endCond[1]) {
             move = path.moveForward(startCond, path.nextStep(startCond, 'E'));
         }
-        // testing end
+
+        System.out.println();
+        for (Integer num : move) {
+            System.out.print(num + " ");
+        }
+        // Testing end
 
     }
 
