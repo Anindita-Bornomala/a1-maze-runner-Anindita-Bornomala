@@ -14,9 +14,9 @@ public class PathSequence {
 
     public String findPath() {
         
-        RightHandRule pathFind = new RightHandRule();
+        // RightHandRule pathFind = new RightHandRule();
         // use to get a canonical path string
-        
+
         return "False"; }
 
     public String factorize(String canonical) { return "False"; }
