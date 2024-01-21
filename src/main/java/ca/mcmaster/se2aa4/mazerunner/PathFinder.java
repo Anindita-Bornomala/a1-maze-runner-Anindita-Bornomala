@@ -6,7 +6,7 @@ public class PathFinder {
     public Integer[] pathStart(char[][] mazeData) {
         Integer[] startCoord = {0, 0};
         for (int row = 0; row < mazeData.length-1; row++) {
-            if (mazeData[row].length > 0 && mazeData[row][0] == ' ') {
+            if (mazeData[row].length > 0 && mazeData[row][0] != '#') {
                 startCoord[0] = row;
                 break;
             }
@@ -20,9 +20,9 @@ public class PathFinder {
 
     // given maze data, return end condition
     public Integer[] pathEnd(char[][] mazeData) {
-        Integer[] endCoord = {0, mazeData.length};
+        Integer[] endCoord = {0, mazeData.length-1};
         for (int row = 0; row < mazeData.length-1; row++) {
-            if (mazeData[row].length > 0 && mazeData[row][mazeData.length-1] == ' ') {
+            if (mazeData[row].length > 0 && mazeData[row][mazeData.length-1] != '#') {
                 endCoord[0] = row;
                 break;
             }
