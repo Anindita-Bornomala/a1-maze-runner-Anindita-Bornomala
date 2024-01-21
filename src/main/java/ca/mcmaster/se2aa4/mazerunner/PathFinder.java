@@ -14,9 +14,16 @@ public class PathFinder {
         return rowNum;
     }
 
-    public String pathEnd(char[][] mazeData) {
+    public Integer pathEnd(char[][] mazeData) {
+        Integer rowNum = 0;
+        for (int row = 0; row < mazeData.length; row++) {
+            if (mazeData[row].length > 0 && mazeData[row][-1] == ' ') {
+                rowNum = row;
+                break;
+            }
+        }
         // given maze data, return end condition
-        return "False";
+        return rowNum;
     }
 
     public String currentStep() { return "False"; }
