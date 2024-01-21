@@ -5,7 +5,7 @@ public class PathSequence {
     public static String FILEPATH = "i";
     public static String PATHCHECK = "p";
 
-    public String[] getMaze() {
+    public String getMaze() {
         // get the file .txt
         // convert into a matrix, so each word is an element (binary)
         // return String[][] mazeData
