@@ -4,8 +4,6 @@ public class PathSequence {
 
     public static String FILEPATH = "i";
     public static String PATHCHECK = "p";
-
-    public void pathStart(String[] mazeStrings) { } // find maze start
     
     //pathfinding algorithm
     public String rightHandRule() {
