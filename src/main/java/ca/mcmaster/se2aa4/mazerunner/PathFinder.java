@@ -77,38 +77,64 @@ public class PathFinder {
         return nextPosition;
     }
 
-    public boolean checkFront(char[][] mazeData, Integer[] nextCoords) {
+    public boolean checkFront(char[][] mazeData, Integer[] nextCoords, char direction) {
         Integer row = nextCoords[0];
         Integer col = nextCoords[1];
-        if (mazeData[row][col] != 'W') {
+        if (mazeData[row][col] != '#') {
+            System.out.println("true");
             return true;
         } else {
+            System.out.println("false");
             return false;
         }
     }
 
-    public boolean checkRight(char[][] mazeData, Integer[] currentStep, char direction) {
-        char tempDirection = turnRight(direction);
-        Integer[] nextCoords = nextStep(currentStep, tempDirection);
+    public boolean checkRight(char[][] mazeData, Integer[] currentSteps, char direction) {
+        System.out.println("this is coming from checkRight function");
+
+        direction = turnRight(direction); // now 'S'
+        Integer[] nextCoords = nextStep(currentSteps, direction);
         Integer row = nextCoords[0];
         Integer col = nextCoords[1];
-        if (mazeData[row][col] != 'W') {
+        if (mazeData[row][col] != '#') {
+            System.out.println("true");
             return true;
         } else {
+            System.out.println("false");
             return false;
         }
     }
 
     //pathfinding algorithm
-    public String rightHandRule() {
-        // get the maze as a matrix
-        // Start at starting position
-        // Search left: one row up, same column
-        // Search right: one row down, same column
-        // Go forward: same row, one column forward 
-        // Mission: either go left, or go right, else go forward
-        // Straight line: Search for pass in next column (ex. r3) 
-        return "No path found!";
+    // DOESNT WORK, FIX THIS
+    public String rightHandRule(char[][] mazeData) {
+        Integer[] startCond = pathStart(mazeData);
+        Integer[] endCond = pathEnd(mazeData);
+        Integer[] pointer = startCond;
+        String sequence = "";
+        System.out.println();
+
+        char direction = 'E';
+        Integer[] nextPosition = nextStep(pointer, direction);
+        
+        while (pointer[1] < endCond[1]) {
+            if (checkRight(mazeData, pointer, direction) == false) {
+                if (checkFront(mazeData, pointer, direction) == true) {
+                    pointer = moveForward(pointer, nextPosition);
+                    sequence.concat("F");
+                } else {
+                    nextPosition = nextStep(pointer, turnRight(direction));
+                    sequence.concat("R");
+                }
+            } else {
+                nextPosition = nextStep(pointer, turnRight(direction));
+                sequence.concat("R");
+                pointer = moveForward(pointer, nextPosition);
+                sequence.concat("F");
+            }
+        }
+        System.out.println("Final position: row " + pointer[0] + ", column " + pointer[1]);
+        return sequence;
     }
 
 

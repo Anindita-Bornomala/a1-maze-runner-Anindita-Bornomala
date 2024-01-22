@@ -35,6 +35,11 @@ public class Main {
         logger.debug("PATH NOT COMPUTED");
         logger.info("** End of MazeRunner");
 
+        /* 
+        //test this
+        String sequence = path.rightHandRule(maze1);
+        System.out.println(sequence);
+        */
     }
 
     private static Configuration configure(String[] cmdArgs) throws Exception, FileNotFoundException {
