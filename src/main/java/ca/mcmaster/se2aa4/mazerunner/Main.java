@@ -44,6 +44,7 @@ public class Main {
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, cmdArgs);
         String inputFilePath = cmd.getOptionValue("i");
+        
         return new Configuration(inputFilePath);
     }
 
