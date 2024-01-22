@@ -77,6 +77,28 @@ public class PathFinder {
         return nextPosition;
     }
 
+    public boolean checkFront(char[][] mazeData, Integer[] nextCoords) {
+        Integer row = nextCoords[0];
+        Integer col = nextCoords[1];
+        if (mazeData[row][col] != 'W') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean checkRight(char[][] mazeData, Integer[] currentStep, char direction) {
+        char tempDirection = turnRight(direction);
+        Integer[] nextCoords = nextStep(currentStep, tempDirection);
+        Integer row = nextCoords[0];
+        Integer col = nextCoords[1];
+        if (mazeData[row][col] != 'W') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     //pathfinding algorithm
     public String rightHandRule() {
         // get the maze as a matrix
