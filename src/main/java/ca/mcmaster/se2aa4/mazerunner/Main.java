@@ -34,7 +34,6 @@ public class Main {
         
         logger.debug("PATH NOT COMPUTED");
         logger.info("** End of MazeRunner");
-
     }
 
     private static Configuration configure(String[] cmdArgs) throws Exception, FileNotFoundException {
