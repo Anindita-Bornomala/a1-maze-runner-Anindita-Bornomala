@@ -20,23 +20,20 @@ public class Main {
         maze.printMazeData(maze1);
 
         logger.info("**** Computing path");
-        logger.debug("PATH NOT COMPUTED");
-        logger.info("** End of MazeRunner");
-
-        
-        System.out.println("Traversing the path...");
-        // Testing pathfinding methods
         PathFinder path = new PathFinder();
         Integer[] startCond = path.pathStart(maze1);
         Integer[] endCond = path.pathEnd(maze1);
         Integer[] move = startCond;
+        System.out.println();
 
         while (move[1] < endCond[1]) {
             move = path.moveForward(startCond, path.nextStep(startCond, 'E'));
         }
-
+        System.out.println();
         System.out.println("Final position of pointer: row " + move[0] + ", column " + move[1]);
-        // Testing end
+        
+        logger.debug("PATH NOT COMPUTED");
+        logger.info("** End of MazeRunner");
 
     }
 

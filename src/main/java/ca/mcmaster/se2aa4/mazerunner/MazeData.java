@@ -14,29 +14,29 @@ public class MazeData {
         int sumCols = 0;
 
         BufferedReader reader = new BufferedReader(new FileReader(filePath));
-        String line2;
-        while ((line2 = reader.readLine()) != null) {
+        String line;
+        while ((line = reader.readLine()) != null) {
             sumRows++;
             if (sumCols == 0) {
-                sumCols = line2.length();
+                sumCols = line.length();
             }
         }
 
         char[][] mazeData = new char[sumRows][sumCols];
 
-        // Fill mazeData with proper data
+        // Fill mazeData with .txt file data
         BufferedReader reader2 = new BufferedReader(new FileReader(filePath));
-        String line3;
+        String line2;
         int row = 0;
-        while ((line3 = reader2.readLine()) != null) {
-            for (int column = 0; column < line3.length(); column++) {
-                mazeData[row][column] = line3.charAt(column);
+        while ((line2 = reader2.readLine()) != null) {
+            for (int column = 0; column < line2.length(); column++) {
+                mazeData[row][column] = line2.charAt(column);
             }
             row++;
         }
         return mazeData;
     }
-
+ 
     public void printMazeData(char[][] mazeData) {
         for (char[] mazeRow : mazeData) {
             for (char element : mazeRow) {
