@@ -11,10 +11,7 @@ public class PathFinder {
                 break;
             }
         }
-        System.out.print("Start condition:");
-        for (Integer num : startCoord) {
-            System.out.print(num + " ");
-        }
+        System.out.println("Start condition: row " + startCoord[0] + ", column " + startCoord[1]);
         return startCoord;
     }
 
@@ -27,19 +24,13 @@ public class PathFinder {
                 break;
             }
         }
-        System.out.print("End condition:");
-        for (Integer num : endCoord) {
-            System.out.print(num + " ");
-        }
+        System.out.println("End condition: row " + endCoord[0] + ", column " + endCoord[1]);
         return endCoord;
     }
 
     public Integer[] moveForward(Integer[] currentStep, Integer[] nextStep) {
         currentStep = nextStep;
-        System.out.print("Current position:");
-        for (Integer num : currentStep) {
-            System.out.print(num + " ");
-        }
+        System.out.println("Current position: row " + currentStep[0] + ", column " + currentStep[1]);
         return currentStep;
     }
 

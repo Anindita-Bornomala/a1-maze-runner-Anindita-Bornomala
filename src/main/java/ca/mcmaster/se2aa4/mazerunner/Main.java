@@ -20,16 +20,15 @@ public class Main {
         maze.printMazeData(maze1);
 
         logger.info("**** Computing path");
-        logger.debug("PATH NOT COMPUTED"); // might not need?
+        logger.debug("PATH NOT COMPUTED");
         logger.info("** End of MazeRunner");
 
         
+        System.out.println("Traversing the path...");
         // Testing pathfinding methods
         PathFinder path = new PathFinder();
-        Integer[] startCond = path.pathStart(maze1); // INCORRECT START COORD
-        System.out.println();
-        Integer[] endCond = path.pathEnd(maze1); // INCORRECT END COORDINATE
-        System.out.println();
+        Integer[] startCond = path.pathStart(maze1);
+        Integer[] endCond = path.pathEnd(maze1);
         Integer[] move = startCond;
 
         while (move[1] < endCond[1]) {
