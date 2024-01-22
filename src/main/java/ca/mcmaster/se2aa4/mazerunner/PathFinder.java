@@ -27,7 +27,7 @@ public class PathFinder {
     }
 
     public Integer[] moveForward(Integer[] currentStep, Integer[] nextPosition) {
-        currentStep = nextStep;
+        currentStep = nextPosition;
         System.out.println("Current position: row " + currentStep[0] + ", column " + currentStep[1]);
         return currentStep;
     }
