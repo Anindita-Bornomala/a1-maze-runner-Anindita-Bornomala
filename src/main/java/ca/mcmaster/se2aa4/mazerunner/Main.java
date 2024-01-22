@@ -24,10 +24,13 @@ public class Main {
         Integer[] startCond = path.pathStart(maze1);
         Integer[] endCond = path.pathEnd(maze1);
         Integer[] move = startCond;
+        char direction = 'E';
         System.out.println();
 
         while (move[1] < endCond[1]) {
-            move = path.moveForward(startCond, path.nextStep(startCond, 'E'));
+            if (path.checkFront(maze1, move, direction) == true) {
+                move = path.moveForward(startCond, path.nextStep(startCond, 'E'));
+            }
         }
         System.out.println();
         System.out.println("Final position of pointer: row " + move[0] + ", column " + move[1]);

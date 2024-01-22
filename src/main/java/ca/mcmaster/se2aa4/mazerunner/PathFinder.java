@@ -77,14 +77,12 @@ public class PathFinder {
         return nextPosition;
     }
 
-    public boolean checkFront(char[][] mazeData, Integer[] nextCoords, char direction) {
+    public boolean checkFront(char[][] mazeData, Integer[] nextCoords, char direction) { // THIS WORKS FINE! :^D
         Integer row = nextCoords[0];
         Integer col = nextCoords[1];
         if (mazeData[row][col] != '#') {
-            System.out.println("true");
             return true;
         } else {
-            System.out.println("false");
             return false;
         }
     }
