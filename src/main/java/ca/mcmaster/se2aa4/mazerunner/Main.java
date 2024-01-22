@@ -35,10 +35,7 @@ public class Main {
             move = path.moveForward(startCond, path.nextStep(startCond, 'E'));
         }
 
-        System.out.println();
-        for (Integer num : move) {
-            System.out.print(num + " ");
-        }
+        System.out.println("Final position of pointer: row " + move[0] + ", column " + move[1]);
         // Testing end
 
     }

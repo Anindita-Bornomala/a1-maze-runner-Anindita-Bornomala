@@ -73,12 +73,7 @@ public class PathFinder {
         } else {
             nextPosition[0]--;
         }
-        System.out.print("Direction:");
-        System.out.println(direction);
-        System.out.print("Next step:");
-        for (Integer num : nextPosition) {
-            System.out.print(num + " ");
-        }
+        System.out.println("Moving to: row " + nextPosition[0] + ", column " + nextPosition[1] + ", direction: " + direction);
         return nextPosition;
     }
 
