@@ -77,7 +77,8 @@ public class PathFinder {
         return nextPosition;
     }
 
-    public boolean checkFront(char[][] mazeData, Integer[] nextCoords, char direction) { // THIS WORKS FINE! :^D
+    public boolean checkFront(char[][] mazeData, Integer[] currentSteps, char direction) { // THIS WORKS FINE! :^D
+        Integer[] nextCoords = nextStep(currentSteps, direction);
         Integer row = nextCoords[0];
         Integer col = nextCoords[1];
         if (mazeData[row][col] != '#') {
