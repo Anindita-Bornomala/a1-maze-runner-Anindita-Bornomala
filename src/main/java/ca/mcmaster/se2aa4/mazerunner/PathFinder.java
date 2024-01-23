@@ -11,7 +11,7 @@ public class PathFinder {
                 break;
             }
         }
-        System.out.println("Start position: row " + startCoord[0] + ", column " + startCoord[1]);
+        // System.out.println("Start position: row " + startCoord[0] + ", column " + startCoord[1]);
         return startCoord;
     }
 
@@ -24,7 +24,7 @@ public class PathFinder {
                 break;
             }
         }
-        System.out.println("End position: row " + endCoord[0] + ", column " + endCoord[1]);
+        // System.out.println("End position: row " + endCoord[0] + ", column " + endCoord[1]);
         return endCoord;
     }
 
@@ -34,7 +34,6 @@ public class PathFinder {
 
     public Integer[] moveForward(Integer[] currentStep, Integer[] nextStep) {
         currentStep = nextStep;
-        // checkCurrentStep(currentStep);
         return currentStep;
     }
 
@@ -77,7 +76,6 @@ public class PathFinder {
         } else {
             nextPosition[0]--;
         }
-        // System.out.println("Next step: row " + nextPosition[0] + ", column " + nextPosition[1] + ", direction: " + direction);
         return nextPosition;
     }
 

@@ -9,7 +9,10 @@ public class PathSequence {
         PathFinder pathFind = new PathFinder();
 
         Integer[] startCond = pathFind.pathStart(mazeData);
+        System.out.println("Start position: row " + startCond[0] + ", column " + startCond[1]);
         Integer[] endCond = pathFind.pathEnd(mazeData);
+        System.out.println("End position: row " + endCond[0] + ", column " + endCond[1]);
+
         Integer[] pointer = startCond; // THIS IS THE PLAYER
         char direction = 'E';
         String sequence = "";
