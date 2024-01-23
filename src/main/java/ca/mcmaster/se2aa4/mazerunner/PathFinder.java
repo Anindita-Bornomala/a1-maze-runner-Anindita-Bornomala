@@ -11,7 +11,6 @@ public class PathFinder {
                 break;
             }
         }
-        // System.out.println("Start position: row " + startCoord[0] + ", column " + startCoord[1]);
         return startCoord;
     }
 
@@ -24,7 +23,6 @@ public class PathFinder {
                 break;
             }
         }
-        // System.out.println("End position: row " + endCoord[0] + ", column " + endCoord[1]);
         return endCoord;
     }
 

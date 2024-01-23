@@ -19,7 +19,7 @@ public class PathSequence {
         Integer[] nextPosition;
         System.out.println();        
         
-        while (pointer[1] < endCond[1]) { // when current is at [2,3]
+        while (pointer[1] < endCond[1]) {
             if (pathFind.checkRight(mazeData, pointer, direction) == false) { // CHECK IF WALL TO RIGHT
                 if (pathFind.checkFront(mazeData, pointer, direction) == true) { // CHECK IF WALL IN FRONT
                     nextPosition = pathFind.nextStep(pointer, direction);
