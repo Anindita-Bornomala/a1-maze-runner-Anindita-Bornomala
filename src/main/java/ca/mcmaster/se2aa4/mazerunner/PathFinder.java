@@ -11,7 +11,7 @@ public class PathFinder {
                 break;
             }
         }
-        System.out.println("Start condition: row " + startCoord[0] + ", column " + startCoord[1]);
+        System.out.println("Start position: row " + startCoord[0] + ", column " + startCoord[1]);
         return startCoord;
     }
 
@@ -24,7 +24,7 @@ public class PathFinder {
                 break;
             }
         }
-        System.out.println("End condition: row " + endCoord[0] + ", column " + endCoord[1]);
+        System.out.println("End position: row " + endCoord[0] + ", column " + endCoord[1]);
         return endCoord;
     }
 
@@ -32,14 +32,9 @@ public class PathFinder {
         System.out.println("Current position: row " + currentSteps[0] + ", column " + currentSteps[1]);
     }
 
-    public void checkCurrentDirection(char direction) {
-        System.out.println("Current position: " + direction);
-    }
-
     public Integer[] moveForward(Integer[] currentStep, Integer[] nextStep) {
         currentStep = nextStep;
-        checkCurrentStep(currentStep);
-        // System.out.println("Current position: row " + currentStep[0] + ", column " + currentStep[1]);
+        // checkCurrentStep(currentStep);
         return currentStep;
     }
 
@@ -54,7 +49,6 @@ public class PathFinder {
         } else if (oldDirection == 'N') {
             newDirection = 'E';
         }
-        checkCurrentDirection(newDirection);
         return newDirection;
     }
 
@@ -69,7 +63,6 @@ public class PathFinder {
         } else if (oldDirection == 'N') {
             newDirection = 'W';
         }
-        checkCurrentDirection(newDirection);
         return newDirection;
     }
 
@@ -84,7 +77,7 @@ public class PathFinder {
         } else {
             nextPosition[0]--;
         }
-        System.out.println("Next step: row " + nextPosition[0] + ", column " + nextPosition[1] + ", direction: " + direction);
+        // System.out.println("Next step: row " + nextPosition[0] + ", column " + nextPosition[1] + ", direction: " + direction);
         return nextPosition;
     }
 
@@ -101,55 +94,16 @@ public class PathFinder {
             row--;
         }
         if (mazeData[row][col] != '#') {
-            System.out.println("True");
             return true;
         } else {
-            System.out.println("False");
             return false;
         }
     }
 
     public boolean checkRight(char[][] mazeData, Integer[] currentSteps, char direction) {
-        System.out.println("ENACT CHECKRIGHT FUNCTION:");
-
         char directChange = turnRight(direction); // now 'S'
         boolean pass = checkFront(mazeData, currentSteps, directChange);
         directChange = turnLeft(directChange);
-        return pass; 
+        return pass;
     }
-
-    //pathfinding algorithm
-    // DOESNT WORK, FIX THIS
-    public String rightHandRule(char[][] mazeData) {
-        Integer[] startCond = pathStart(mazeData);
-        Integer[] endCond = pathEnd(mazeData);
-        Integer[] pointer = startCond;
-        String sequence = "";
-        System.out.println();
-
-        char direction = 'E';
-        Integer[] nextPosition = nextStep(pointer, direction);
-        
-        while (pointer[1] < endCond[1]) {
-            if (checkRight(mazeData, pointer, direction) == false) {
-                if (checkFront(mazeData, pointer, direction) == true) {
-                    pointer = moveForward(pointer, nextPosition);
-                    sequence.concat("F");
-                } else {
-                    nextPosition = nextStep(pointer, turnRight(direction));
-                    sequence.concat("R");
-                }
-            } else {
-                nextPosition = nextStep(pointer, turnRight(direction));
-                sequence.concat("R");
-                pointer = moveForward(pointer, nextPosition);
-                sequence.concat("F");
-            }
-        }
-        System.out.println("Final position: row " + pointer[0] + ", column " + pointer[1]);
-        return sequence;
-    }
-
-
-    
 }

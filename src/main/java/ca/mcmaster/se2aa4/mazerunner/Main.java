@@ -15,45 +15,20 @@ public class Main {
         logger.info("** Starting Maze Runner");
         logger.info("**** Reading the maze from file " + config.inputFile);
         
+        //CALLS ON MAZEDATA CLASS TO STORE AND PRINT DATA
         MazeData maze = new MazeData();
         char[][] maze1 = maze.storeMazeData(config.inputFile);
         maze.printMazeData(maze1);
 
         logger.info("**** Computing path");
 
-
+        // TESTING THE RIGHT HAND RULE ALGORITH, YEAHHHHH
         PathSequence getSeq = new PathSequence();
-        String pleaseLetThisWork = getSeq.findPath(maze1);
+        String pleaseLetThisWork = getSeq.rightHandRule(maze1);
         System.out.println(pleaseLetThisWork);
-        /* 
-        PathFinder path = new PathFinder();
-        Integer[] startCond = path.pathStart(maze1);
-        Integer[] endCond = path.pathEnd(maze1);
-        Integer[] move = startCond;
-        char direction = 'E';
-        System.out.println();
-
-        while (move[1] < endCond[1]) { 
-            if (path.checkFront(maze1, move, direction) == true) {
-                if (path.checkRight(maze1, move, direction) == false) {
-                    System.out.println("smurf");
-                    move = path.moveForward(move, path.nextStep(move, direction));
-                }
-            }
-        }
-        
-        System.out.println();
-        System.out.println("Final position of pointer: row " + move[0] + ", column " + move[1]);
-        */
         
         logger.debug("PATH NOT COMPUTED");
         logger.info("** End of MazeRunner");
-
-        /* 
-        //test this
-        String sequence = path.rightHandRule(maze1);
-        System.out.println(sequence);
-        */
     }
 
     private static Configuration configure(String[] cmdArgs) throws Exception, FileNotFoundException {

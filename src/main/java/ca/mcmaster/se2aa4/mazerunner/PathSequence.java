@@ -5,7 +5,7 @@ public class PathSequence {
     public static String FILEPATH = "i";
     public static String PATHCHECK = "p";
 
-    public String findPath(char[][] mazeData) {
+    public String rightHandRule(char[][] mazeData) { // RightHandRule: use to get a canonical path string
         PathFinder pathFind = new PathFinder();
 
         Integer[] startCond = pathFind.pathStart(mazeData);
@@ -21,28 +21,23 @@ public class PathSequence {
                 if (pathFind.checkFront(mazeData, pointer, direction) == true) { // CHECK IF WALL IN FRONT
                     nextPosition = pathFind.nextStep(pointer, direction);
                     pointer = pathFind.moveForward(pointer, nextPosition); // MOVE FORWARD
-                    // sequence.concat("F");
                     sequence = sequence + "F";
                 } else {
                     direction = pathFind.turnRight(direction); // TURN RIGHT
                     sequence = sequence + "R";
-                    // sequence.concat("R");
                 }
             } else {
                 direction = pathFind.turnRight(direction); // TURN RIGHT
-                //sequence.concat("R");
                 sequence = sequence + "R";
                 nextPosition = pathFind.nextStep(pointer, direction);
                 pointer = pathFind.moveForward(pointer, nextPosition); // MOVE FORWARD
-                // sequence.concat("F");
                 sequence = sequence + "F";
             }
+            pathFind.checkCurrentStep(pointer);
         }
+        System.out.println();
         System.out.println("Final position: row " + pointer[0] + ", column " + pointer[1]);
         return sequence;
-
-        // RightHandRule pathFind = new RightHandRule();
-        // use to get a canonical path string
         }
 
     public String factorize(String canonical) { return "False"; }
