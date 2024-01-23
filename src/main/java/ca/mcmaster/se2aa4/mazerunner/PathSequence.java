@@ -1,5 +1,7 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
+import java.util.ArrayList;
+
 public class PathSequence {
 
     public static String FILEPATH = "i";
@@ -23,7 +25,7 @@ public class PathSequence {
                     pointer = pathFind.moveForward(pointer, nextPosition); // MOVE FORWARD
                     sequence = sequence + "F";
                 } else {
-                    direction = pathFind.turnLeft(direction); // CHANGED FROM RIGHT TO LEFT, TEST THIS
+                    direction = pathFind.turnLeft(direction); // TURN LEFT
                     sequence = sequence + "L";
                 }
             } else {
@@ -40,11 +42,42 @@ public class PathSequence {
         return sequence;
         }
 
-    public String factorize(String canonical) { return "False"; }
-
     // Path guess checker
     public String pathCheck() {
         return "Incorrect path!";
+    }
+
+    public String factorize(String canonical) {
+
+        String result = "";
+        int count = 1;
+        
+        for (int i = 1; i <= canonical.length(); i++) {
+            if(i == canonical.length() || canonical.charAt(i) != canonical.charAt(i-1)) {
+                result = result + count + canonical.charAt(i-1) + " ";
+                count = 1;
+            } else {
+                count++;
+            }
+        }
+        return result.trim();
+    }
+
+
+    public static String countCharacters(String input) {
+        StringBuilder result = new StringBuilder();
+        int count = 1;
+
+        for (int i = 1; i <= input.length(); i++) {
+            if (i == input.length() || input.charAt(i) != input.charAt(i - 1)) {
+                result.append(count).append(input.charAt(i - 1)).append(" ");
+                count = 1;
+            } else {
+                count++;
+            }
+        }
+
+        return result.toString().trim();
     }
 
 }

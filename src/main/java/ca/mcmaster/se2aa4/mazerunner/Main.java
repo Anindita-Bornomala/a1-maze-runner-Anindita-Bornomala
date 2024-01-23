@@ -26,6 +26,8 @@ public class Main {
         PathSequence getSeq = new PathSequence();
         String pleaseLetThisWork = getSeq.rightHandRule(maze1);
         System.out.println(pleaseLetThisWork);
+
+        System.out.println(getSeq.factorize(pleaseLetThisWork));
         
         logger.debug("PATH NOT COMPUTED");
         logger.info("** End of MazeRunner");
