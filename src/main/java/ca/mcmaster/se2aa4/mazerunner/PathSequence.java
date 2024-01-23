@@ -23,8 +23,8 @@ public class PathSequence {
                     pointer = pathFind.moveForward(pointer, nextPosition); // MOVE FORWARD
                     sequence = sequence + "F";
                 } else {
-                    direction = pathFind.turnRight(direction); // TURN RIGHT
-                    sequence = sequence + "R";
+                    direction = pathFind.turnLeft(direction); // CHANGED FROM RIGHT TO LEFT, TEST THIS
+                    sequence = sequence + "L";
                 }
             } else {
                 direction = pathFind.turnRight(direction); // TURN RIGHT
