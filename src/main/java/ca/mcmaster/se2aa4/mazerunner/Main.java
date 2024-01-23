@@ -21,6 +21,11 @@ public class Main {
 
         logger.info("**** Computing path");
 
+
+        PathSequence getSeq = new PathSequence();
+        String pleaseLetThisWork = getSeq.findPath(maze1);
+        System.out.println(pleaseLetThisWork);
+        /* 
         PathFinder path = new PathFinder();
         Integer[] startCond = path.pathStart(maze1);
         Integer[] endCond = path.pathEnd(maze1);
@@ -36,8 +41,10 @@ public class Main {
                 }
             }
         }
+        
         System.out.println();
         System.out.println("Final position of pointer: row " + move[0] + ", column " + move[1]);
+        */
         
         logger.debug("PATH NOT COMPUTED");
         logger.info("** End of MazeRunner");

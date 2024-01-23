@@ -13,23 +13,29 @@ public class PathSequence {
         Integer[] pointer = startCond; // THIS IS THE PLAYER
         char direction = 'E';
         String sequence = "";
-        Integer[] nextPosition = pathFind.nextStep(pointer, direction);
+        Integer[] nextPosition;
         System.out.println();        
         
-        while (pointer[1] < endCond[1]) {
-            if (pathFind.checkRight(mazeData, pointer, direction) == false) {
-                if (pathFind.checkFront(mazeData, pointer, direction) == true) {
-                    pointer = pathFind.moveForward(pointer, nextPosition);
-                    sequence.concat("F");
+        while (pointer[1] < endCond[1]) { // when current is at [2,3]
+            if (pathFind.checkRight(mazeData, pointer, direction) == false) { // CHECK IF WALL TO RIGHT
+                if (pathFind.checkFront(mazeData, pointer, direction) == true) { // CHECK IF WALL IN FRONT
+                    nextPosition = pathFind.nextStep(pointer, direction);
+                    pointer = pathFind.moveForward(pointer, nextPosition); // MOVE FORWARD
+                    // sequence.concat("F");
+                    sequence = sequence + "F";
                 } else {
-                    nextPosition = pathFind.nextStep(pointer, pathFind.turnRight(direction));
-                    sequence.concat("R");
+                    direction = pathFind.turnRight(direction); // TURN RIGHT
+                    sequence = sequence + "R";
+                    // sequence.concat("R");
                 }
             } else {
-                nextPosition = pathFind.nextStep(pointer, pathFind.turnRight(direction));
-                sequence.concat("R");
-                pointer = pathFind.moveForward(pointer, nextPosition);
-                sequence.concat("F");
+                direction = pathFind.turnRight(direction); // TURN RIGHT
+                //sequence.concat("R");
+                sequence = sequence + "R";
+                nextPosition = pathFind.nextStep(pointer, direction);
+                pointer = pathFind.moveForward(pointer, nextPosition); // MOVE FORWARD
+                // sequence.concat("F");
+                sequence = sequence + "F";
             }
         }
         System.out.println("Final position: row " + pointer[0] + ", column " + pointer[1]);
