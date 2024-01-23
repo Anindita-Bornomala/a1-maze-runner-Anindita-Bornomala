@@ -14,6 +14,7 @@ public class Main {
 
         logger.info("** Starting Maze Runner");
         logger.info("**** Reading the maze from file " + config.inputFile);
+        logger.info("**** Reading the string: " + config.pathGuess);
         
         //CALLS ON MAZEDATA CLASS TO STORE AND PRINT DATA
         MazeData maze = new MazeData();
@@ -25,9 +26,11 @@ public class Main {
         // TESTING THE RIGHT HAND RULE ALGORITH, YEAHHHHH
         PathSequence getSeq = new PathSequence();
         String pleaseLetThisWork = getSeq.rightHandRule(maze1);
-        System.out.println(pleaseLetThisWork);
+        System.out.println("Canonical form: " + pleaseLetThisWork);
+        System.out.println("Factorized form: " + getSeq.factorize(pleaseLetThisWork));
 
-        System.out.println(getSeq.factorize(pleaseLetThisWork));
+        //CHECKING THE USER'S PATH GUESS
+        System.out.println(getSeq.pathCheck(maze1, config.pathGuess));
         
         logger.debug("PATH NOT COMPUTED");
         logger.info("** End of MazeRunner");
@@ -41,10 +44,11 @@ public class Main {
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, cmdArgs);
         String inputFilePath = cmd.getOptionValue("i");
-        return new Configuration(inputFilePath);
+        String inputPathGuess = cmd.getOptionValue("p");
+        return new Configuration(inputFilePath, inputPathGuess);
     }
 
-    private record Configuration(String inputFile) {
+    private record Configuration(String inputFile, String pathGuess) {
         Configuration {
             if (inputFile == null) {throw new IllegalArgumentException("Maze text file is empty!");} 
         }

@@ -1,7 +1,5 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
-import java.util.ArrayList;
-
 public class PathSequence {
 
     public static String FILEPATH = "i";
@@ -42,16 +40,10 @@ public class PathSequence {
         return sequence;
         }
 
-    // Path guess checker
-    public String pathCheck() {
-        return "Incorrect path!";
-    }
-
     public String factorize(String canonical) {
-
         String result = "";
         int count = 1;
-        
+
         for (int i = 1; i <= canonical.length(); i++) {
             if(i == canonical.length() || canonical.charAt(i) != canonical.charAt(i-1)) {
                 result = result + count + canonical.charAt(i-1) + " ";
@@ -60,24 +52,33 @@ public class PathSequence {
                 count++;
             }
         }
-        return result.trim();
+        return result;
     }
 
+    // Path guess checker
+    public String pathCheck(char[][] mazeData, String pathGuess) {
+        PathFinder pathFind = new PathFinder();
 
-    public static String countCharacters(String input) {
-        StringBuilder result = new StringBuilder();
-        int count = 1;
+        Integer[] startCond = pathFind.pathStart(mazeData);
+        Integer[] endCond = pathFind.pathEnd(mazeData);
+        Integer[] pointer = startCond; // THIS IS THE PLAYER
+        char direction = 'E';
+        Integer[] nextPosition;
 
-        for (int i = 1; i <= input.length(); i++) {
-            if (i == input.length() || input.charAt(i) != input.charAt(i - 1)) {
-                result.append(count).append(input.charAt(i - 1)).append(" ");
-                count = 1;
-            } else {
-                count++;
+        for (char element : pathGuess.toCharArray()) {
+            if (element == 'F') {
+                nextPosition = pathFind.nextStep(pointer, direction);
+                pointer = pathFind.moveForward(pointer, nextPosition);
+            } else if (element == 'R') {
+                direction = pathFind.turnRight(direction); // TURN RIGHT
+            } else if (element == 'L') {
+                direction = pathFind.turnLeft(direction); // TURN LEFT
             }
         }
-
-        return result.toString().trim();
+        if (pointer[1] == endCond[1]) {
+            return "Correct path!";
+        } else {
+            return "Incorrect path!";
+        }
     }
-
 }
