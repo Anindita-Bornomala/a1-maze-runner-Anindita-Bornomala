@@ -29,7 +29,9 @@ public class Main {
 
         while (move[1] < endCond[1]) {
             if (path.checkFront(maze1, move, direction) == true) {
-                move = path.moveForward(startCond, path.nextStep(startCond, 'E'));
+                // if (path.checkRight(maze1, move, direction) == false) {
+                move = path.moveForward(move, path.nextStep(move, direction));
+                // }
             }
         }
         System.out.println();

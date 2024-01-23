@@ -28,9 +28,18 @@ public class PathFinder {
         return endCoord;
     }
 
+    public void checkCurrentStep(Integer[] currentSteps) {
+        System.out.println("Current position: row " + currentSteps[0] + ", column " + currentSteps[1])
+    }
+
+    public void checkCurrentDirection(char direction) {
+        System.out.println("Current position:", direction);
+    }
+
     public Integer[] moveForward(Integer[] currentStep, Integer[] nextStep) {
         currentStep = nextStep;
-        System.out.println("Current position: row " + currentStep[0] + ", column " + currentStep[1]);
+        checkCurrentStep(currentStep);
+        // System.out.println("Current position: row " + currentStep[0] + ", column " + currentStep[1]);
         return currentStep;
     }
 
@@ -73,7 +82,7 @@ public class PathFinder {
         } else {
             nextPosition[0]--;
         }
-        System.out.println("Moving to: row " + nextPosition[0] + ", column " + nextPosition[1] + ", direction: " + direction);
+        System.out.println("Next step: row " + nextPosition[0] + ", column " + nextPosition[1] + ", direction: " + direction);
         return nextPosition;
     }
 
@@ -89,17 +98,16 @@ public class PathFinder {
     }
 
     public boolean checkRight(char[][] mazeData, Integer[] currentSteps, char direction) {
-        System.out.println("this is coming from checkRight function");
+        System.out.println("ENACT CHECKRIGHT FUNCTION:");
 
-        direction = turnRight(direction); // now 'S'
-        Integer[] nextCoords = nextStep(currentSteps, direction);
-        Integer row = nextCoords[0];
-        Integer col = nextCoords[1];
-        if (mazeData[row][col] != '#') {
+        char directChange = turnRight(direction); // now 'S'
+        if (checkFront(mazeData, currentSteps, directChange) == false) {
             System.out.println("true");
+            directChange = turnLeft(directChange);
             return true;
         } else {
             System.out.println("false");
+            directChange = turnLeft(directChange);
             return false;
         }
     }
