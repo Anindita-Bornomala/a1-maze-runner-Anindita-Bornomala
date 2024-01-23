@@ -20,6 +20,7 @@ public class Main {
         maze.printMazeData(maze1);
 
         logger.info("**** Computing path");
+
         PathFinder path = new PathFinder();
         Integer[] startCond = path.pathStart(maze1);
         Integer[] endCond = path.pathEnd(maze1);
@@ -27,10 +28,12 @@ public class Main {
         char direction = 'E';
         System.out.println();
 
-        while (move[1] < endCond[1]) {
+        while (move[1] < endCond[1]) { 
             if (path.checkFront(maze1, move, direction) == true) {
-                System.out.println("smurf");
-                move = path.moveForward(move, path.nextStep(move, direction));
+                if (path.checkRight(maze1, move, direction) == false) {
+                    System.out.println("smurf");
+                    move = path.moveForward(move, path.nextStep(move, direction));
+                }
             }
         }
         System.out.println();

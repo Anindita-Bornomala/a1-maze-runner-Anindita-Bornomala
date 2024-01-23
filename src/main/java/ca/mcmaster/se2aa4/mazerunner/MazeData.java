@@ -8,8 +8,6 @@ import java.io.IOException;
 public class MazeData {
 
     public char[][] storeMazeData(String filePath) throws IOException, FileNotFoundException{
-        
-        // initialize an empty matrix with correct rows and columns
         int sumRows = 0;
         int sumCols = 0;
 
@@ -24,7 +22,6 @@ public class MazeData {
 
         char[][] mazeData = new char[sumRows][sumCols];
 
-        // Fill mazeData with .txt file data
         BufferedReader reader2 = new BufferedReader(new FileReader(filePath));
         String line2;
         int row = 0;
