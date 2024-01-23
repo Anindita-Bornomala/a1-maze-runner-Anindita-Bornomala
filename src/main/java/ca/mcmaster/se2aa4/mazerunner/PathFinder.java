@@ -36,7 +36,7 @@ public class PathFinder {
         System.out.println("Current position: " + direction);
     }
 
-    public Integer[] moveForward(Integer[] currentStep, Integer[] nextStep) {
+    public Integer[] moveForward(, Integer[] currentStep, Integer[] nextStep) {
         currentStep = nextStep;
         checkCurrentStep(currentStep);
         // System.out.println("Current position: row " + currentStep[0] + ", column " + currentStep[1]);
@@ -89,9 +89,10 @@ public class PathFinder {
     }
 
     public boolean checkFront(char[][] mazeData, Integer[] currentSteps, char direction) { // THIS WORKS FINE! :^D
-        Integer[] nextCoords = nextStep(currentSteps, direction);
-        Integer row = nextCoords[0];
-        Integer col = nextCoords[1];
+        if (direction == 'E') {
+            Integer row = currentSteps[0] + 1;
+            Integer col = currentSteps[1]; 
+        }
         if (mazeData[row][col] != '#') {
             return true;
         } else {
