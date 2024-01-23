@@ -27,13 +27,10 @@ public class Main {
         char direction = 'E';
         System.out.println();
 
-        PathSequence pathSeq = new PathSequence();
         while (move[1] < endCond[1]) {
-            if (pathSeq.checkFront(maze1, move, direction) == true) {
-                // if (path.checkRight(maze1, move, direction) == false) {
+            if (path.checkFront(maze1, move, direction) == true) {
                 System.out.println("smurf");
                 move = path.moveForward(move, path.nextStep(move, direction));
-                // }
             }
         }
         System.out.println();
