@@ -29,11 +29,11 @@ public class PathFinder {
     }
 
     public void checkCurrentStep(Integer[] currentSteps) {
-        System.out.println("Current position: row " + currentSteps[0] + ", column " + currentSteps[1])
+        System.out.println("Current position: row " + currentSteps[0] + ", column " + currentSteps[1]);
     }
 
     public void checkCurrentDirection(char direction) {
-        System.out.println("Current position:", direction);
+        System.out.println("Current position: " + direction);
     }
 
     public Integer[] moveForward(Integer[] currentStep, Integer[] nextStep) {
@@ -54,6 +54,7 @@ public class PathFinder {
         } else if (oldDirection == 'N') {
             newDirection = 'E';
         }
+        checkCurrentDirection(newDirection);
         return newDirection;
     }
 
@@ -68,6 +69,7 @@ public class PathFinder {
         } else if (oldDirection == 'N') {
             newDirection = 'W';
         }
+        checkCurrentDirection(newDirection);
         return newDirection;
     }
 
