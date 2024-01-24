@@ -30,7 +30,9 @@ public class Main {
         System.out.println("Factorized form: " + getSeq.factorize(pleaseLetThisWork));
 
         //CHECKING THE USER'S PATH GUESS
-        System.out.println(getSeq.pathCheck(maze1, config.pathGuess));
+        if (config.pathGuess != null) {
+            System.out.println(getSeq.pathCheck(maze1, config.pathGuess));
+        }
         
         logger.debug("PATH NOT COMPUTED");
         logger.info("** End of MazeRunner");
