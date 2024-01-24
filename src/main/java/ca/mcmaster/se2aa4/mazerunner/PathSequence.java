@@ -57,31 +57,4 @@ public class PathSequence {
         }
         return result;
     }
-
-    // Path guess checker
-    public String pathCheck(char[][] mazeData, String pathGuess) {
-        PathFinder pathFind = new PathFinder();
-
-        Integer[] startCond = pathFind.pathStart(mazeData);
-        Integer[] endCond = pathFind.pathEnd(mazeData);
-        Integer[] pointer = startCond; // THIS IS THE PLAYER
-        char direction = 'E';
-        Integer[] nextPosition;
-
-        for (char element : pathGuess.toCharArray()) {
-            if (element == 'F') {
-                nextPosition = pathFind.nextStep(pointer, direction);
-                pointer = pathFind.moveForward(pointer, nextPosition);
-            } else if (element == 'R') {
-                direction = pathFind.turnRight(direction); // TURN RIGHT
-            } else if (element == 'L') {
-                direction = pathFind.turnLeft(direction); // TURN LEFT
-            }
-        }
-        if (pointer[1] == endCond[1]) {
-            return "Correct path!";
-        } else {
-            return "Incorrect path!";
-        }
-    }
 }

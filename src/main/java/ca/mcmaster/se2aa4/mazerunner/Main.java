@@ -25,13 +25,14 @@ public class Main {
 
         // TESTING THE RIGHT HAND RULE ALGORITH, YEAHHHHH
         PathSequence getSeq = new PathSequence();
-        String pleaseLetThisWork = getSeq.rightHandRule(maze1);
+        String pleaseLetThisWork = getSeq.rightHandRule(maze1); // call rightHandRule method
         System.out.println("Canonical form: " + pleaseLetThisWork);
         System.out.println("Factorized form: " + getSeq.factorize(pleaseLetThisWork));
 
         //CHECKING THE USER'S PATH GUESS
+        PathChecker pathCheck = new PathChecker();
         if (config.pathGuess != null) {
-            System.out.println(getSeq.pathCheck(maze1, config.pathGuess));
+            System.out.println(pathCheck.pathCheck(maze1, config.pathGuess));
         }
         
         logger.debug("PATH NOT COMPUTED");
