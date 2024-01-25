@@ -64,7 +64,7 @@ public class MazeData {
     }
 
     public char getEndCol(int row) {
-        return this.maze[row][-1];
+        return this.maze[row][getSumCol()-1];
     }
     public char getMazeElement(int row, int col) {
         return this.maze[row][col];

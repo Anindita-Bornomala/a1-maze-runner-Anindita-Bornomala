@@ -25,7 +25,7 @@ public class PathFinder {
     public Integer[] pathEnd(MazeData maze) {
         Integer[] endCoord = {0, maze.sumRow - 1};
         for (int row = 0; row < maze.getSumRow() - 1; row++) {
-            if (maze.getSumCol() > 0 && maze.getEndCol(row) != '#') {
+            if (maze.getSumCol() > 0 && (maze.getEndCol(row)-1) != '#') {
                 endCoord[0] = row;
                 break;
             }
