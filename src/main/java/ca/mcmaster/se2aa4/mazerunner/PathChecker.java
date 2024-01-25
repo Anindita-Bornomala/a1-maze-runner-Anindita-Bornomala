@@ -6,7 +6,7 @@ public class PathChecker {
         PathFinder pathFind = new PathFinder();
 
         if (pathGuess.charAt(0) != 'F' || pathGuess.charAt(0) != 'R' || pathGuess.charAt(0) != 'L') {
-            pathGuess = factToCanon(pathGuess);
+            pathGuess = factToCanon(pathGuess); // if in factorized form, convert to canonical before checking
         }
         
         Integer[] startCond = pathFind.pathStart(mazeData);
@@ -34,7 +34,6 @@ public class PathChecker {
 
     public String factToCanon(String pathGuessFact) {
         String[] pathSplit = pathGuessFact.split("(?<=\\D)(?=\\d)");
-
         String result = "";
         int count = 0;
 
