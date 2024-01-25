@@ -1,16 +1,21 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
 public class PathChecker {
+    private MazeData maze;
 
-    public String pathCheck(MazeData mazeData, String pathGuess) {
-        PathFinder pathFind = new PathFinder(mazeData);
+    public PathChecker(MazeData maze) {
+        this.maze = maze;
+    }
+
+    public String pathCheck(MazeData maze, String pathGuess) {
+        PathFinder pathFind = new PathFinder(maze);
 
         if (pathGuess.charAt(0) != 'F' || pathGuess.charAt(0) != 'R' || pathGuess.charAt(0) != 'L') {
             pathGuess = factToCanon(pathGuess); // if in factorized form, convert to canonical before checking
         }
         
-        Integer[] startCond = pathFind.pathStart(mazeData);
-        Integer[] endCond = pathFind.pathEnd(mazeData);
+        Integer[] startCond = pathFind.pathStart(maze);
+        Integer[] endCond = pathFind.pathEnd(maze);
         Integer[] pointer = startCond; // THIS IS THE PLAYER
         char direction = 'E';
         Integer[] nextPosition;

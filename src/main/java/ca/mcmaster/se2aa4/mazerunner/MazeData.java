@@ -42,7 +42,6 @@ public class MazeData {
                 row++;
             }
             reader2.close();
-
         } catch (FileNotFoundException e) {
             System.out.println("Error");
         } catch (IOException e) {

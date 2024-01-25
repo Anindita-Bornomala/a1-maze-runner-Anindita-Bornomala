@@ -33,12 +33,12 @@ public class Main {
         getSeq.rightHandRule(maze1);
 
         //CHECKING THE USER'S PATH GUESS
-        /* 
-        PathChecker check = new PathChecker();
+        
+        PathChecker check = new PathChecker(maze1);
         if (config.pathGuess != null) {
             System.out.println(check.pathCheck(maze1, config.pathGuess));
         }
-        */
+        
         
         logger.debug("PATH NOT COMPUTED");
         logger.info("** End of MazeRunner");
