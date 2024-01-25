@@ -10,16 +10,15 @@ public class MazeData {
     public int sumRow;
     public int sumCol;
 
-    public MazeData(String filePath){
+    public MazeData(String filePath) {
         storeMazeData(this.maze, filePath);
         this.sumRow = maze.length;
         this.sumCol = maze[0].length; //
     }
 
     private void storeMazeData(char[][] mazeData, String filePath) {
-
         try{
-            /*
+            
             int sumRows = 0;
             // int sumCols = 0;
 
@@ -27,13 +26,13 @@ public class MazeData {
             String line;
             while ((line = reader.readLine()) != null) {
                 sumRows++;
-                if (sumCols == 0) {
-                    sumCols = line.length();
+                if (col == 0) {
+                    col = line.length();
                 }
             }
             reader.close();
-            */
-            mazeData = new char[getSumRow()][getSumCol()];
+            
+            mazeData = new char[row][col];
 
             BufferedReader reader2 = new BufferedReader(new FileReader(filePath));
             String line2;
