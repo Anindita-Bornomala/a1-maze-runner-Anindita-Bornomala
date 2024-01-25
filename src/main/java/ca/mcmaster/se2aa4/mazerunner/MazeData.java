@@ -18,21 +18,19 @@ public class MazeData {
 
     private void storeMazeData(char[][] mazeData, String filePath) {
         try{
-            
             int sumRows = 0;
-            // int sumCols = 0;
+            int sumCols = 0;
 
             BufferedReader reader = new BufferedReader(new FileReader(filePath));
             String line;
             while ((line = reader.readLine()) != null) {
                 sumRows++;
-                if (col == 0) {
-                    col = line.length();
+                if (sumCols == 0) {
+                    sumCols = line.length();
                 }
             }
             reader.close();
-            
-            mazeData = new char[row][col];
+            mazeData = new char[sumRows][sumCols];
 
             BufferedReader reader2 = new BufferedReader(new FileReader(filePath));
             String line2;
