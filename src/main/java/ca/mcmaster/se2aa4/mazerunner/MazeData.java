@@ -19,6 +19,7 @@ public class MazeData {
                 sumCols = line.length();
             }
         }
+        reader.close();
 
         char[][] mazeData = new char[sumRows][sumCols];
 
@@ -31,6 +32,7 @@ public class MazeData {
             }
             row++;
         }
+        reader2.close();
         return mazeData;
     }
  
