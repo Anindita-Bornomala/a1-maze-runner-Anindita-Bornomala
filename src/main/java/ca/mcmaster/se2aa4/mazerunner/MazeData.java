@@ -6,37 +6,63 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class MazeData {
+    public char[][] maze;
+    public int sumRow;
+    public int sumCol;
 
-    public char[][] storeMazeData(String filePath) throws IOException, FileNotFoundException {
-        int sumRows = 0;
-        int sumCols = 0;
+    public MazeData(String filePath){
+        storeMazeData(this.maze, filePath);
+        this.sumRow = maze.length;
+        this.sumCol = maze[0].length; //
+    }
 
-        BufferedReader reader = new BufferedReader(new FileReader(filePath));
-        String line;
-        while ((line = reader.readLine()) != null) {
-            sumRows++;
-            if (sumCols == 0) {
-                sumCols = line.length();
+    private void storeMazeData(char[][] mazeData, String filePath) {
+
+        try{
+            /*
+            int sumRows = 0;
+            // int sumCols = 0;
+
+            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sumRows++;
+                if (sumCols == 0) {
+                    sumCols = line.length();
+                }
             }
-        }
-        reader.close();
-        char[][] mazeData = new char[sumRows][sumCols];
+            reader.close();
+            */
+            mazeData = new char[getSumRow()][getSumCol()];
 
-        BufferedReader reader2 = new BufferedReader(new FileReader(filePath));
-        String line2;
-        int row = 0;
-        while ((line2 = reader2.readLine()) != null) {
-            for (int column = 0; column < line2.length(); column++) {
-                mazeData[row][column] = line2.charAt(column);
+            BufferedReader reader2 = new BufferedReader(new FileReader(filePath));
+            String line2;
+            int row = 0;
+            while ((line2 = reader2.readLine()) != null) {
+                for (int column = 0; column < line2.length(); column++) {
+                    mazeData[row][column] = line2.charAt(column);
+                }
+                row++;
             }
-            row++;
+            reader2.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Error");
+        } catch (IOException e) {
+            System.out.println("Error");
         }
-        reader2.close();
-        return mazeData;
+    }
+
+    public int getSumRow() {
+        return this.sumRow;
+    }
+
+    public int getSumCol() {
+        return this.sumCol;
     }
  
-    public void printMazeData(char[][] mazeData) {
-        for (char[] mazeRow : mazeData) {
+    public void printMazeData() {
+        for (char[] mazeRow : this.maze) {
             for (char element : mazeRow) {
                 if (element == '#') {
                     System.out.print("WALL ");

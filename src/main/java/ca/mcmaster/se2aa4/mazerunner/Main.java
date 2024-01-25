@@ -17,9 +17,16 @@ public class Main {
         logger.info("**** Reading the string: " + config.pathGuess);
         
         //CALLS ON MAZEDATA CLASS TO STORE AND PRINT DATA
+        MazeData maze2 = new MazeData(config.inputFile);
+        maze2.printMazeData();
+
+        
+        
+        /* 
         MazeData maze = new MazeData();
         char[][] maze1 = maze.storeMazeData(config.inputFile); // GOTTA HIDE TYPE
         maze.printMazeData(maze1);
+        */
 
         System.out.print(System.lineSeparator());
         logger.info("**** Computing path");
