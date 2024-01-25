@@ -17,29 +17,28 @@ public class Main {
         logger.info("**** Reading the string: " + config.pathGuess);
         
         //CALLS ON MAZEDATA CLASS TO STORE AND PRINT DATA
-        MazeData maze2 = new MazeData(config.inputFile);
-        maze2.printMazeData();
+        
+        MazeData maze1 = new MazeData(config.inputFile);
+        maze1.printMazeData();
 
-        
-        
-        /* 
-        MazeData maze = new MazeData();
-        char[][] maze1 = maze.storeMazeData(config.inputFile); // GOTTA HIDE TYPE
-        maze.printMazeData(maze1);
-        */
+        // MazeData maze = new MazeData();
+        // char[][] maze1 = maze.storeMazeData(config.inputFile); // GOTTA HIDE TYPE
+        // maze.printMazeData(maze1);
 
         System.out.print(System.lineSeparator());
         logger.info("**** Computing path");
 
         // TESTING THE RIGHT HAND RULE ALGORITH, YEAHHHHH
-        PathSequence getSeq = new PathSequence();
+        PathSequence getSeq = new PathSequence(maze1);
         getSeq.rightHandRule(maze1);
 
         //CHECKING THE USER'S PATH GUESS
+        /* 
         PathChecker check = new PathChecker();
         if (config.pathGuess != null) {
             System.out.println(check.pathCheck(maze1, config.pathGuess));
         }
+        */
         
         logger.debug("PATH NOT COMPUTED");
         logger.info("** End of MazeRunner");

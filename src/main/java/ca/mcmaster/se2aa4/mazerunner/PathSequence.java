@@ -1,9 +1,14 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
 public class PathSequence {
+    private MazeData maze;
 
-    public void rightHandRule(char[][] mazeData) { // RightHandRule: use to get a canonical path string
-        PathFinder pathFind = new PathFinder();
+    public PathSequence(MazeData maze) {
+        this.maze = maze;
+    }
+
+    public void rightHandRule(MazeData mazeData) { // RightHandRule: use to get a canonical path string
+        PathFinder pathFind = new PathFinder(maze);
 
         Integer[] startCond = pathFind.pathStart(mazeData); // GET START COORDINATES
         System.out.println("Start position: row " + (startCond[0] + 1) + ", column " + (startCond[1] + 1));

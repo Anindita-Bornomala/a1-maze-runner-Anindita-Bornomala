@@ -1,24 +1,31 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
 public class PathFinder {
+    // char[][] maze1;
+    private MazeData maze;
+
+    public PathFinder(MazeData maze) {
+        this.maze = maze;
+    }
 
     // given maze data, return start condition
-    public Integer[] pathStart(char[][] mazeData) {
+    public Integer[] pathStart(MazeData maze) {
+        this.maze = maze;
         Integer[] startCoord = {0, 0};
-        for (int row = 0; row < mazeData.length-1; row++) {
-            if (mazeData[row].length > 0 && mazeData[row][0] != '#') {
+        for (int row = 0; row < maze.getSumRow()-1; row++) {
+            if ((maze.getSumCol() > 0) && ((maze.getStartCol(row)) != '#')) {
                 startCoord[0] = row;
                 break;
             }
         }
         return startCoord;
-    }
+    } 
 
     // given maze data, return end condition
-    public Integer[] pathEnd(char[][] mazeData) {
-        Integer[] endCoord = {0, mazeData.length-1};
-        for (int row = 0; row < mazeData.length-1; row++) {
-            if (mazeData[row].length > 0 && mazeData[row][mazeData.length-1] != '#') {
+    public Integer[] pathEnd(MazeData maze) {
+        Integer[] endCoord = {0, maze.sumRow - 1};
+        for (int row = 0; row < maze.getSumRow() - 1; row++) {
+            if (maze.getSumCol() > 0 && maze.getEndCol(row) != '#') {
                 endCoord[0] = row;
                 break;
             }
@@ -26,8 +33,8 @@ public class PathFinder {
         return endCoord;
     }
 
-    public void checkCurrentStep(Integer[] currentSteps) {
-        System.out.print("[row " + (currentSteps[0] + 1) + ", column " + (currentSteps[1] + 1) + "]");
+    public void checkCurrentStep(Integer[] currentStep) {
+        System.out.print("[row " + (currentStep[0] + 1) + ", column " + (currentStep[1] + 1) + "]");
     }
 
     public Integer[] moveForward(Integer[] currentStep, Integer[] nextStep) {
@@ -77,7 +84,7 @@ public class PathFinder {
         return nextPosition;
     }
 
-    public boolean checkFront(char[][] mazeData, Integer[] currentSteps, char direction) { // THIS WORKS FINE! :^D
+    public boolean checkFront(MazeData maze, Integer[] currentSteps, char direction) { // THIS WORKS FINE! :^D
         Integer row = currentSteps[0];
         Integer col = currentSteps[1];
         if (direction == 'E') {
@@ -89,16 +96,16 @@ public class PathFinder {
         } else {
             row--;
         }
-        if (mazeData[row][col] != '#') {
+        if (maze.getMazeElement(row, col) != '#') {
             return true;
         } else {
             return false;
         }
     }
 
-    public boolean checkRight(char[][] mazeData, Integer[] currentSteps, char direction) {
+    public boolean checkRight(MazeData maze, Integer[] currentSteps, char direction) {
         char directChange = turnRight(direction); // now 'S'
-        boolean pass = checkFront(mazeData, currentSteps, directChange);
+        boolean pass = checkFront(this.maze, currentSteps, directChange);
         directChange = turnLeft(directChange);
         return pass;
     }

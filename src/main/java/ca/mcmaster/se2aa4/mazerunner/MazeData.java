@@ -11,12 +11,12 @@ public class MazeData {
     public int sumCol;
 
     public MazeData(String filePath) {
-        storeMazeData(this.maze, filePath);
+        this.maze = storeMazeData(this.maze, filePath);
         this.sumRow = maze.length;
-        this.sumCol = maze[0].length; //
+        this.sumCol = maze[0].length;
     }
 
-    private void storeMazeData(char[][] mazeData, String filePath) {
+    private char[][] storeMazeData(char[][] mazeData, String filePath) {
         try{
             int sumRows = 0;
             int sumCols = 0;
@@ -48,6 +48,7 @@ public class MazeData {
         } catch (IOException e) {
             System.out.println("Error");
         }
+        return mazeData;
     }
 
     public int getSumRow() {
@@ -56,6 +57,17 @@ public class MazeData {
 
     public int getSumCol() {
         return this.sumCol;
+    }
+
+    public char getStartCol(int row) {
+        return this.maze[row][0];
+    }
+
+    public char getEndCol(int row) {
+        return this.maze[row][-1];
+    }
+    public char getMazeElement(int row, int col) {
+        return this.maze[row][col];
     }
  
     public void printMazeData() {

@@ -2,8 +2,8 @@ package ca.mcmaster.se2aa4.mazerunner;
 
 public class PathChecker {
 
-    public String pathCheck(char[][] mazeData, String pathGuess) {
-        PathFinder pathFind = new PathFinder();
+    public String pathCheck(MazeData mazeData, String pathGuess) {
+        PathFinder pathFind = new PathFinder(mazeData);
 
         if (pathGuess.charAt(0) != 'F' || pathGuess.charAt(0) != 'R' || pathGuess.charAt(0) != 'L') {
             pathGuess = factToCanon(pathGuess); // if in factorized form, convert to canonical before checking
