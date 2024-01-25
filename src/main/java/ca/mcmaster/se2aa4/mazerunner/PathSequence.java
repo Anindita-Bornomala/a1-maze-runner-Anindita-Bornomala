@@ -2,46 +2,43 @@ package ca.mcmaster.se2aa4.mazerunner;
 
 public class PathSequence {
 
-    public static String FILEPATH = "i";
-    public static String PATHCHECK = "p";
-
-    public String rightHandRule(char[][] mazeData) { // RightHandRule: use to get a canonical path string
+    public void rightHandRule(char[][] mazeData) { // RightHandRule: use to get a canonical path string
         PathFinder pathFind = new PathFinder();
 
-        Integer[] startCond = pathFind.pathStart(mazeData);
-        System.out.println("Start position: row " + startCond[0] + ", column " + startCond[1]);
-        Integer[] endCond = pathFind.pathEnd(mazeData);
-        System.out.println("End position: row " + endCond[0] + ", column " + endCond[1]);
-
+        Integer[] startCond = pathFind.pathStart(mazeData); // GET START COORDINATES
+        System.out.println("Start position: row " + (startCond[0] + 1) + ", column " + (startCond[1] + 1));
+        Integer[] endCond = pathFind.pathEnd(mazeData); // GET END COORDINATES
+        System.out.println("End position: row " + (endCond[0] + 1) + ", column " + (endCond[1] + 1));
         Integer[] pointer = startCond; // THIS IS THE PLAYER
-        char direction = 'E';
-        String sequence = "";
+        char direction = 'E'; // INTIIAL DIRECTION
+        String canonical = "";
         Integer[] nextPosition;
-        System.out.println();        
+        System.out.println();
         
+        System.out.print("Steps taken:");
         while (pointer[1] < endCond[1]) {
             if (pathFind.checkRight(mazeData, pointer, direction) == false) { // CHECK IF WALL TO RIGHT
                 if (pathFind.checkFront(mazeData, pointer, direction) == true) { // CHECK IF WALL IN FRONT
                     nextPosition = pathFind.nextStep(pointer, direction);
                     pointer = pathFind.moveForward(pointer, nextPosition); // MOVE FORWARD
-                    sequence = sequence + "F";
+                    canonical = canonical + "F";
                 } else {
                     direction = pathFind.turnLeft(direction); // TURN LEFT
-                    sequence = sequence + "L";
+                    canonical = canonical + "L";
                 }
             } else {
                 direction = pathFind.turnRight(direction); // TURN RIGHT
-                sequence = sequence + "R";
+                canonical = canonical + "R";
                 nextPosition = pathFind.nextStep(pointer, direction);
                 pointer = pathFind.moveForward(pointer, nextPosition); // MOVE FORWARD
-                sequence = sequence + "F";
+                canonical = canonical + "F";
             }
             pathFind.checkCurrentStep(pointer);
         }
-        System.out.println();
-        System.out.println("Final position: row " + pointer[0] + ", column " + pointer[1]);
-        return sequence;
-        }
+        System.out.print(System.lineSeparator());
+        System.out.println("Canonical form: " + canonical);
+        System.out.println("Factorized form: " + factorize(canonical));
+    }
 
     public String factorize(String canonical) {
         String result = "";

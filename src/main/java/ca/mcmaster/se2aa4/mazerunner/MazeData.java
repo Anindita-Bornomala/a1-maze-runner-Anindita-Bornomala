@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class MazeData {
 
-    public char[][] storeMazeData(String filePath) throws IOException, FileNotFoundException{
+    public char[][] storeMazeData(String filePath) throws IOException, FileNotFoundException {
         int sumRows = 0;
         int sumCols = 0;
 
@@ -20,7 +20,6 @@ public class MazeData {
             }
         }
         reader.close();
-
         char[][] mazeData = new char[sumRows][sumCols];
 
         BufferedReader reader2 = new BufferedReader(new FileReader(filePath));
@@ -48,5 +47,4 @@ public class MazeData {
             System.out.print(System.lineSeparator());
         }
     }
-    
 }

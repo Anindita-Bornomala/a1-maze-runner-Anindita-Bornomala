@@ -21,13 +21,12 @@ public class Main {
         char[][] maze1 = maze.storeMazeData(config.inputFile); // GOTTA HIDE TYPE
         maze.printMazeData(maze1);
 
+        System.out.print(System.lineSeparator());
         logger.info("**** Computing path");
 
         // TESTING THE RIGHT HAND RULE ALGORITH, YEAHHHHH
         PathSequence getSeq = new PathSequence();
-        String pleaseLetThisWork = getSeq.rightHandRule(maze1); // GOTTA HIDE TYPE
-        System.out.println("Canonical form: " + pleaseLetThisWork);
-        System.out.println("Factorized form: " + getSeq.factorize(pleaseLetThisWork));
+        getSeq.rightHandRule(maze1);
 
         //CHECKING THE USER'S PATH GUESS
         PathChecker check = new PathChecker();
