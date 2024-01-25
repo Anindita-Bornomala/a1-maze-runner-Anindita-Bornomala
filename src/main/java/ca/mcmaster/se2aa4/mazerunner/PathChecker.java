@@ -33,23 +33,17 @@ public class PathChecker {
     }
 
     public String factToCanon(String pathGuessFact) {
-        String[] pathSplit = pathGuessFact.split(" ");
+        String[] pathSplit = pathGuessFact.split("(?<=\\D)(?=\\d)");
+
         String result = "";
-        int count = 1;
+        int count = 0;
 
         for (String element : pathSplit) {
-            count = (int) (element.charAt(0) - '0');
+            count = element.charAt(0) - '0';
             for (int i = 0; i < count; i++) {
-                if (element.charAt(1) == 'F') {
-                    result = result + "F";
-                } else if (element.charAt(1) == 'R') {
-                    result = result + "R";
-                } else {
-                    result = result + "L";
-                }
+                result = result + element.charAt(1);
             }
         }
-        System.out.println(result);
         return result;
     }
 }

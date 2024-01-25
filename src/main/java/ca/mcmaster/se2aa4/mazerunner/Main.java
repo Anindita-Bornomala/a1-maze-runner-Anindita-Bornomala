@@ -18,21 +18,21 @@ public class Main {
         
         //CALLS ON MAZEDATA CLASS TO STORE AND PRINT DATA
         MazeData maze = new MazeData();
-        char[][] maze1 = maze.storeMazeData(config.inputFile);
+        char[][] maze1 = maze.storeMazeData(config.inputFile); // GOTTA HIDE TYPE
         maze.printMazeData(maze1);
 
         logger.info("**** Computing path");
 
         // TESTING THE RIGHT HAND RULE ALGORITH, YEAHHHHH
         PathSequence getSeq = new PathSequence();
-        String pleaseLetThisWork = getSeq.rightHandRule(maze1); // call rightHandRule method
+        String pleaseLetThisWork = getSeq.rightHandRule(maze1); // GOTTA HIDE TYPE
         System.out.println("Canonical form: " + pleaseLetThisWork);
         System.out.println("Factorized form: " + getSeq.factorize(pleaseLetThisWork));
 
         //CHECKING THE USER'S PATH GUESS
-        PathChecker pathCheck = new PathChecker();
+        PathChecker check = new PathChecker();
         if (config.pathGuess != null) {
-            System.out.println(pathCheck.pathCheck(maze1, config.pathGuess));
+            System.out.println(check.pathCheck(maze1, config.pathGuess));
         }
         
         logger.debug("PATH NOT COMPUTED");
