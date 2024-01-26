@@ -1,12 +1,10 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
 public class PathChecker {
-    private MazeData maze;
-
+    
     public PathChecker(MazeData maze) {
-        this.maze = maze;
     }
-
+    
     public String pathCheck(MazeData maze, String pathGuess) {
         PathFinder pathFind = new PathFinder(maze);
 

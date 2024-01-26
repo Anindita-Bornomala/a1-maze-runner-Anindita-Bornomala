@@ -1,11 +1,13 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
 public class PathSequence {
+     
     private MazeData maze;
-
+    
     public PathSequence(MazeData maze) {
         this.maze = maze;
     }
+    
 
     public void rightHandRule(MazeData maze) { // RightHandRule: use to get a canonical path string
         PathFinder pathFind = new PathFinder(maze);
