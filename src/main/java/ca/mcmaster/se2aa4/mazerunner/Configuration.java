@@ -27,11 +27,7 @@ public class Configuration {
         return new Configuration(inputFilePath, inputPathGuess);
     }
 
-    public String getInputFile() {
-        return inputFile;
-    }
+    public String getInputFile() { return inputFile; }
 
-    public String getPathGuess() {
-        return pathGuess;
-    }
+    public String getPathGuess() { return pathGuess; }
 }

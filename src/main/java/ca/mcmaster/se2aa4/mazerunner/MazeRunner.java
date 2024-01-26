@@ -3,23 +3,10 @@ package ca.mcmaster.se2aa4.mazerunner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Main {
-
+public class MazeRunner {
     private static final Logger logger = LogManager.getLogger();
 
-    public static void main(String[] args) {
-        try {
-            new MazeRunner(args);
-        } catch (Exception e) {
-            logger.error("An error occurred: " + e.getMessage());
-        }
-    }
-
-        
-        
-        
-
-        /* 
+    public MazeRunner(String[] args) {
         try {
             Configuration config = Configuration.configure(args);
 
@@ -50,5 +37,4 @@ public class Main {
         logger.debug("PATH NOT COMPUTED");
         logger.info("** End of MazeRunner");
     }
-    */
 }
