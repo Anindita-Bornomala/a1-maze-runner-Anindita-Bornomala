@@ -33,10 +33,6 @@ public class PathFinder {
         return endCoord;
     }
 
-    public void checkCurrentStep(Integer[] currentStep) {
-        System.out.print("[row " + (currentStep[0] + 1) + ", column " + (currentStep[1] + 1) + "]");
-    }
-
     public Integer[] moveForward(Integer[] currentStep, Integer[] nextStep) {
         currentStep = nextStep;
         return currentStep;

@@ -1,7 +1,6 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
 public class PathSequence {
-     
     public PathSequence(MazeData maze) {
     }
     
@@ -19,7 +18,7 @@ public class PathSequence {
         Integer[] nextPosition;
         System.out.println();
         
-        System.out.print("Steps taken:");
+        // System.out.print("Steps taken:");
         while (pointer[1] < endCond[1]) {
             if (pathFind.checkRight(maze, pointer, direction) == false) { // CHECK IF WALL TO RIGHT
                 if (pathFind.checkFront(maze, pointer, direction) == true) { // CHECK IF WALL IN FRONT
@@ -37,7 +36,7 @@ public class PathSequence {
                 pointer = pathFind.moveForward(pointer, nextPosition); // MOVE FORWARD
                 canonical = canonical + "F";
             }
-            pathFind.checkCurrentStep(pointer);
+            // pathFind.checkCurrentStep(pointer);
         }
         System.out.print(System.lineSeparator());
         System.out.println("Canonical form: " + canonical);
