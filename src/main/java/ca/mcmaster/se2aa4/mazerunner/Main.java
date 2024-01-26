@@ -37,31 +37,6 @@ public class Main {
             System.out.println("Error");
         }
 
-        /* 
-        Configuration config = Configuration.configure(args);
-
-        logger.info("** Starting Maze Runner");
-        logger.info("**** Reading the maze from file " + config.getInputFile());
-        logger.info("**** Reading the string: " + config.getPathGuess());
-        
-        //CALLS ON MAZEDATA CLASS TO STORE AND PRINT DATA
-        MazeData maze1 = new MazeData(config.getInputFile());
-        maze1.printMazeData();
-
-        System.out.print(System.lineSeparator());
-        logger.info("**** Computing path");
-
-        // TESTING THE RIGHT HAND RULE ALGORITH, YEAHHHHH
-        PathSequence getSeq = new PathSequence(maze1);
-        getSeq.rightHandRule(maze1);
-
-        //CHECKING THE USER'S PATH GUESS
-        PathChecker check = new PathChecker(maze1);
-        if (config.getPathGuess() != null) {
-            System.out.println(check.pathCheck(maze1, config.getPathGuess()));
-        }
-        */
-
         logger.debug("PATH NOT COMPUTED");
         logger.info("** End of MazeRunner");
     }

@@ -2,10 +2,7 @@ package ca.mcmaster.se2aa4.mazerunner;
 
 public class PathSequence {
      
-    private MazeData maze;
-    
     public PathSequence(MazeData maze) {
-        this.maze = maze;
     }
     
 
