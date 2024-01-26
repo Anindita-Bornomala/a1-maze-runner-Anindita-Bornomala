@@ -2,16 +2,17 @@ package ca.mcmaster.se2aa4.mazerunner;
 
 public class PathChecker {
     
-    public PathChecker(MazeData maze) {
-    }
+    public PathChecker(MazeData maze) {}
     
     public String pathCheck(MazeData maze, String pathGuess) {
         PathFinder pathFind = new PathFinder(maze);
-
-        if (pathGuess.charAt(0) != 'F' || pathGuess.charAt(0) != 'R' || pathGuess.charAt(0) != 'L') {
+        
+        if (pathGuess.charAt(0) == 'F' || pathGuess.charAt(0) == 'R' || pathGuess.charAt(0) == 'L') {
+            pathGuess = pathGuess.replaceAll(" ", "");
+        } else {
             pathGuess = factToCanon(pathGuess); // if in factorized form, convert to canonical before checking
         }
-        
+
         Integer[] startCond = pathFind.pathStart(maze);
         Integer[] endCond = pathFind.pathEnd(maze);
         Integer[] pointer = startCond; // THIS IS THE PLAYER
@@ -26,8 +27,11 @@ public class PathChecker {
                 direction = pathFind.turnRight(direction); // TURN RIGHT
             } else if (element == 'L') {
                 direction = pathFind.turnLeft(direction); // TURN LEFT
+            } else {
+                continue;
             }
         }
+        System.out.println(pathGuess);
         if (pointer[1] == endCond[1]) {
             return "Correct path!";
         } else {
@@ -35,8 +39,8 @@ public class PathChecker {
         }
     }
 
-    public String factToCanon(String pathGuessFact) {
-        String[] pathSplit = pathGuessFact.split("(?<=\\D)(?=\\d)");
+    public String factToCanon(String factPathGuess) {
+        String[] pathSplit = factPathGuess.split("(?<=\\D)(?=\\d)");
         String result = "";
         int count = 0;
 
