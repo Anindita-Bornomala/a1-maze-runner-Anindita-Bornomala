@@ -1,7 +1,6 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -46,32 +45,21 @@ public class MazeData {
                 row++;
             }
             reader2.close();
-        } catch (FileNotFoundException e) {
-            logger.error("Error");
         } catch (IOException e) {
-            logger.error("Error");
+            logger.error("/!\\ An error has occured /!\\");
         }
         return mazeData;
     }
 
-    public int getSumRow() {
-        return this.sumRow;
-    }
+    public int getSumRow() { return this.sumRow; }
 
-    public int getSumCol() {
-        return this.sumCol;
-    }
+    public int getSumCol() { return this.sumCol; }
 
-    public char getStartCol(int row) {
-        return this.maze[row][0];
-    }
+    public char getStartCol(int row) { return this.maze[row][0]; }
 
-    public char getEndCol(int row) {
-        return this.maze[row][getSumCol()-1];
-    }
-    public char getMazeElement(int row, int col) {
-        return this.maze[row][col];
-    }
+    public char getEndCol(int row) { return this.maze[row][getSumCol()-1]; }
+
+    public char getMazeElement(int row, int col) { return this.maze[row][col]; }
  
     public void printMazeData() {
         for (char[] mazeRow : this.maze) {

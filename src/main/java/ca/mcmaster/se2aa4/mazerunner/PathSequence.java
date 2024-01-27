@@ -7,10 +7,10 @@ public class PathSequence {
     public void rightHandRule(MazeData maze) { // RightHandRule: use to get a canonical path string
         PathFinder pathFind = new PathFinder(maze);
 
-        Integer[] startCond = pathFind.pathStart(maze); // GET START COORDINATES
-        Integer[] endCond = pathFind.pathEnd(maze); // GET END COORDINATES
-        Integer[] pointer = startCond; // THIS IS THE PLAYER
-        char direction = 'E'; // INTIIAL DIRECTION
+        Integer[] startCond = pathFind.pathStart(maze); 
+        Integer[] endCond = pathFind.pathEnd(maze);
+        Integer[] pointer = startCond;
+        char direction = 'E';
         String canonical = "";
         Integer[] nextPosition;
         

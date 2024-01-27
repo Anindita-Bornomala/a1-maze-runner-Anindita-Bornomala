@@ -10,7 +10,7 @@ public class Main {
         try {
             new MazeRunner(args);
         } catch (Exception e) {
-            logger.error("Error");
+            logger.error("/!\\ An error has occured /!\\");
         }
     }
 }

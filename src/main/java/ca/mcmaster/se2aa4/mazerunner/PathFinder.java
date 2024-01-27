@@ -1,7 +1,6 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
 public class PathFinder {
-    // char[][] maze1;
     private MazeData maze;
 
     public PathFinder(MazeData maze) {
