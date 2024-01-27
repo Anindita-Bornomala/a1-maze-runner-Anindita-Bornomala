@@ -3,7 +3,6 @@ package ca.mcmaster.se2aa4.mazerunner;
 public class PathSequence {
     public PathSequence(MazeData maze) {
     }
-    
 
     public void rightHandRule(MazeData maze) { // RightHandRule: use to get a canonical path string
         PathFinder pathFind = new PathFinder(maze);
@@ -33,12 +32,10 @@ public class PathSequence {
                 canonical = canonical + "F";
             }
         }
-        System.out.print(System.lineSeparator());
-        System.out.println("Canonical form: " + canonical);
-        System.out.println("Factorized form: " + factorize(canonical));
+        factorize(canonical);
     }
 
-    public String factorize(String canonical) {
+    public void factorize(String canonical) {
         String result = "";
         int count = 1;
 
@@ -50,6 +47,6 @@ public class PathSequence {
                 count++;
             }
         }
-        return result;
+        System.out.println("Generated Path: " + result);
     }
 }

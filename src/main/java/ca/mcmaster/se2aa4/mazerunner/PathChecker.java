@@ -31,7 +31,6 @@ public class PathChecker {
                 continue;
             }
         }
-        System.out.println(pathGuess);
         if (pointer[1] == endCond[1]) {
             return "Correct path!";
         } else {

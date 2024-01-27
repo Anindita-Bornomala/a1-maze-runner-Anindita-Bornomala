@@ -31,7 +31,7 @@ public class MazeRunner {
                 System.out.println(check.pathCheck(maze1, config.getPathGuess()));
             }
         } catch (Exception e) {
-            System.out.println("Error");
+            logger.error("Error");
         }
 
         logger.debug("PATH NOT COMPUTED");

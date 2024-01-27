@@ -5,7 +5,11 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class MazeData {
+    private static final Logger logger = LogManager.getLogger();
     public char[][] maze;
     public int sumRow;
     public int sumCol;
@@ -43,9 +47,9 @@ public class MazeData {
             }
             reader2.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Error");
+            logger.error("Error");
         } catch (IOException e) {
-            System.out.println("Error");
+            logger.error("Error");
         }
         return mazeData;
     }
