@@ -9,16 +9,12 @@ public class PathSequence {
         PathFinder pathFind = new PathFinder(maze);
 
         Integer[] startCond = pathFind.pathStart(maze); // GET START COORDINATES
-        System.out.println("Start position: row " + (startCond[0] + 1) + ", column " + (startCond[1] + 1));
         Integer[] endCond = pathFind.pathEnd(maze); // GET END COORDINATES
-        System.out.println("End position: row " + (endCond[0] + 1) + ", column " + (endCond[1] + 1));
         Integer[] pointer = startCond; // THIS IS THE PLAYER
         char direction = 'E'; // INTIIAL DIRECTION
         String canonical = "";
         Integer[] nextPosition;
-        System.out.println();
         
-        // System.out.print("Steps taken:");
         while (pointer[1] < endCond[1]) {
             if (pathFind.checkRight(maze, pointer, direction) == false) { // CHECK IF WALL TO RIGHT
                 if (pathFind.checkFront(maze, pointer, direction) == true) { // CHECK IF WALL IN FRONT
@@ -36,7 +32,6 @@ public class PathSequence {
                 pointer = pathFind.moveForward(pointer, nextPosition); // MOVE FORWARD
                 canonical = canonical + "F";
             }
-            // pathFind.checkCurrentStep(pointer);
         }
         System.out.print(System.lineSeparator());
         System.out.println("Canonical form: " + canonical);
