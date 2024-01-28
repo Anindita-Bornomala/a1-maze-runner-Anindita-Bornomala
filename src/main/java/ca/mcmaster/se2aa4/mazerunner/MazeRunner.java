@@ -20,11 +20,11 @@ public class MazeRunner {
             System.out.print(System.lineSeparator());
             logger.info("**** Computing path");
 
-            PathSequence getSeq = new PathSequence(maze1);
-            getSeq.rightHandRule(maze1);
-
-            PathChecker check = new PathChecker(maze1);
-            if (config.getPathGuess() != null) {
+            if (config.getPathGuess() == null) {
+                PathSequence getSeq = new PathSequence(maze1);
+                getSeq.rightHandRule(maze1);   
+            } else {
+                PathChecker check = new PathChecker(maze1);
                 System.out.println(check.pathCheck(maze1, config.getPathGuess()));
             }
         } catch (Exception e) {

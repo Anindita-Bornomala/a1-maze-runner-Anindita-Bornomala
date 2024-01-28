@@ -47,6 +47,6 @@ public class PathSequence {
                 count++;
             }
         }
-        System.out.println("Generated Path: " + result);
+        System.out.println(result);
     }
 }
