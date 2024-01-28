@@ -1,7 +1,6 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
 public class PathChecker {
-    
     public PathChecker(MazeData maze) {}
     
     public String pathCheck(MazeData maze, String pathGuess) {
@@ -10,7 +9,7 @@ public class PathChecker {
         if (pathGuess.charAt(0) == 'F' || pathGuess.charAt(0) == 'R' || pathGuess.charAt(0) == 'L') {
             pathGuess = pathGuess.replaceAll(" ", "");
         } else {
-            pathGuess = factToCanon(pathGuess); // if in factorized form, convert to canonical before checking
+            pathGuess = factToCanon(pathGuess);
         }
 
         Integer[] startCond = pathFind.pathStart(maze);

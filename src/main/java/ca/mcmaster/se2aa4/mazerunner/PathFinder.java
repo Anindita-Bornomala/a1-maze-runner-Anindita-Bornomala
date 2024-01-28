@@ -7,8 +7,7 @@ public class PathFinder {
         this.maze = maze;
     }
 
-    // given maze data, return start condition
-    public Integer[] pathStart(MazeData maze) {
+    public Integer[] pathStart(MazeData maze) { // get start coordinates
         this.maze = maze;
         Integer[] startCoord = {0, 0};
         for (int row = 0; row < maze.getSumRow()-1; row++) {
@@ -20,8 +19,7 @@ public class PathFinder {
         return startCoord;
     } 
 
-    // given maze data, return end condition
-    public Integer[] pathEnd(MazeData maze) {
+    public Integer[] pathEnd(MazeData maze) { // get end coordinates
         Integer[] endCoord = {0, maze.sumRow - 1};
         for (int row = 0; row < maze.getSumRow() - 1; row++) {
             if (maze.getSumCol() > 0 && (maze.getEndCol(row)-1) != '#') {
@@ -32,12 +30,12 @@ public class PathFinder {
         return endCoord;
     }
 
-    public Integer[] moveForward(Integer[] currentStep, Integer[] nextStep) {
+    public Integer[] moveForward(Integer[] currentStep, Integer[] nextStep) { // move forward
         currentStep = nextStep;
         return currentStep;
     }
 
-    public char turnRight(char oldDirection) {
+    public char turnRight(char oldDirection) { // turn right
         char newDirection = 'E';
         if (oldDirection == 'E') {
             newDirection = 'S';
@@ -51,7 +49,7 @@ public class PathFinder {
         return newDirection;
     }
 
-    public char turnLeft(char oldDirection) {
+    public char turnLeft(char oldDirection) { // turn left
         char newDirection = 'E';
         if (oldDirection == 'E') {
             newDirection = 'N';
@@ -65,7 +63,7 @@ public class PathFinder {
         return newDirection;
     }
 
-    public Integer[] nextStep(Integer[] currentStep, char direction) {
+    public Integer[] nextStep(Integer[] currentStep, char direction) { // determine direction
         Integer[] nextPosition = currentStep;
         if (direction == 'E') {
             nextPosition[1]++;  
@@ -79,7 +77,7 @@ public class PathFinder {
         return nextPosition;
     }
 
-    public boolean checkFront(MazeData maze, Integer[] currentSteps, char direction) { // THIS WORKS FINE! :^D
+    public boolean checkFront(MazeData maze, Integer[] currentSteps, char direction) { // check for walls in front
         Integer row = currentSteps[0];
         Integer col = currentSteps[1];
         if (direction == 'E') {
@@ -98,7 +96,7 @@ public class PathFinder {
         }
     }
 
-    public boolean checkRight(MazeData maze, Integer[] currentSteps, char direction) {
+    public boolean checkRight(MazeData maze, Integer[] currentSteps, char direction) { // check for walls to the right
         char directChange = turnRight(direction); // now 'S'
         boolean pass = checkFront(this.maze, currentSteps, directChange);
         directChange = turnLeft(directChange);

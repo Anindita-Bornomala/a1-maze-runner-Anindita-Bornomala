@@ -4,7 +4,7 @@ public class PathSequence {
     public PathSequence(MazeData maze) {
     }
 
-    public void rightHandRule(MazeData maze) { // RightHandRule: use to get a canonical path string
+    public void rightHandRule(MazeData maze) {
         PathFinder pathFind = new PathFinder(maze);
 
         Integer[] startCond = pathFind.pathStart(maze); 
@@ -15,20 +15,20 @@ public class PathSequence {
         Integer[] nextPosition;
         
         while (pointer[1] < endCond[1]) {
-            if (pathFind.checkRight(maze, pointer, direction) == false) { // CHECK IF WALL TO RIGHT
-                if (pathFind.checkFront(maze, pointer, direction) == true) { // CHECK IF WALL IN FRONT
+            if (pathFind.checkRight(maze, pointer, direction) == false) {
+                if (pathFind.checkFront(maze, pointer, direction) == true) {
                     nextPosition = pathFind.nextStep(pointer, direction);
-                    pointer = pathFind.moveForward(pointer, nextPosition); // MOVE FORWARD
+                    pointer = pathFind.moveForward(pointer, nextPosition);
                     canonical = canonical + "F";
                 } else {
-                    direction = pathFind.turnLeft(direction); // TURN LEFT
+                    direction = pathFind.turnLeft(direction);
                     canonical = canonical + "L";
                 }
             } else {
-                direction = pathFind.turnRight(direction); // TURN RIGHT
+                direction = pathFind.turnRight(direction);
                 canonical = canonical + "R";
                 nextPosition = pathFind.nextStep(pointer, direction);
-                pointer = pathFind.moveForward(pointer, nextPosition); // MOVE FORWARD
+                pointer = pathFind.moveForward(pointer, nextPosition);
                 canonical = canonical + "F";
             }
         }
