@@ -1,44 +1,68 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class MazeData {
+    private static final Logger logger = LogManager.getLogger();
+    public char[][] maze;
+    public int sumRow;
+    public int sumCol;
 
-    public char[][] storeMazeData(String filePath) throws IOException, FileNotFoundException{
-        
-        // initialize an empty matrix with correct rows and columns
-        int sumRows = 0;
-        int sumCols = 0;
+    public MazeData(String filePath) {
+        this.maze = storeMazeData(this.maze, filePath);
+        this.sumRow = maze.length;
+        this.sumCol = maze[0].length;
+    }
 
-        BufferedReader reader = new BufferedReader(new FileReader(filePath));
-        String line;
-        while ((line = reader.readLine()) != null) {
-            sumRows++;
-            if (sumCols == 0) {
-                sumCols = line.length();
+    private char[][] storeMazeData(char[][] mazeData, String filePath) {
+        try{
+            int sumRows = 0;
+            int sumCols = 0;
+
+            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sumRows++;
+                if (sumCols == 0) {
+                    sumCols = line.length();
+                }
             }
-        }
+            reader.close();
+            mazeData = new char[sumRows][sumCols];
 
-        char[][] mazeData = new char[sumRows][sumCols];
-
-        // Fill mazeData with .txt file data
-        BufferedReader reader2 = new BufferedReader(new FileReader(filePath));
-        String line2;
-        int row = 0;
-        while ((line2 = reader2.readLine()) != null) {
-            for (int column = 0; column < line2.length(); column++) {
-                mazeData[row][column] = line2.charAt(column);
+            BufferedReader reader2 = new BufferedReader(new FileReader(filePath));
+            String line2;
+            int row = 0;
+            while ((line2 = reader2.readLine()) != null) {
+                for (int column = 0; column < line2.length(); column++) {
+                    mazeData[row][column] = line2.charAt(column);
+                }
+                row++;
             }
-            row++;
+            reader2.close();
+        } catch (IOException e) {
+            logger.error("/!\\ An error has occured /!\\");
         }
         return mazeData;
     }
+
+    public int getSumRow() { return this.sumRow; }
+
+    public int getSumCol() { return this.sumCol; }
+
+    public char getStartCol(int row) { return this.maze[row][0]; }
+
+    public char getEndCol(int row) { return this.maze[row][getSumCol()-1]; }
+
+    public char getMazeElement(int row, int col) { return this.maze[row][col]; }
  
-    public void printMazeData(char[][] mazeData) {
-        for (char[] mazeRow : mazeData) {
+    public void printMazeData() {
+        for (char[] mazeRow : this.maze) {
             for (char element : mazeRow) {
                 if (element == '#') {
                     System.out.print("WALL ");
@@ -49,5 +73,4 @@ public class MazeData {
             System.out.print(System.lineSeparator());
         }
     }
-    
 }
