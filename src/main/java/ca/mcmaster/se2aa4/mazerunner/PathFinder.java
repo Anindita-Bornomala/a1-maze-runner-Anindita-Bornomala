@@ -97,7 +97,7 @@ public class PathFinder {
     }
 
     public boolean checkRight(MazeData maze, Integer[] currentSteps, char direction) { // check for walls to the right
-        char directChange = turnRight(direction); // now 'S'
+        char directChange = turnRight(direction);
         boolean pass = checkFront(this.maze, currentSteps, directChange);
         directChange = turnLeft(directChange);
         return pass;
