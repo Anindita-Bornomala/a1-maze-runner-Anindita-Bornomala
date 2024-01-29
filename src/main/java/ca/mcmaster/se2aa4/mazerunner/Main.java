@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 public interface Main {
     static final Logger logger = LogManager.getLogger();
+
     public static void main(String[] args) {
         try {
             new MazeRunner(args);
